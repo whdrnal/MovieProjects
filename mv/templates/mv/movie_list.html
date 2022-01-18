@@ -1,0 +1,157 @@
+{% extends 'layout.html' %}
+{% load humanize %}
+{%block content %}
+
+{% with img_box_class="t-relative t-overflow-hidden t-rounded" %}
+{% with img_box_before_class="before:t-content-[''] before:t-absolute before:t-inset-0 before:t-bg-[#00000000] group-hover:before:t-bg-[#00000055] before:t-transition-all" %}
+{% with img_box_after_class="after:t-content-[attr(data-before)] after:t-hidden group-hover:after:t-block after:t-no-underline after:t-text-white after:t-border-2 after:t-border-white after:t-border-solid after:t-rounded after:t-p-2 after:t-whitespace-nowrap after:t-absolute after:t-top-[50%] after:t-left-[50%] after:t-translate-y-[-50%] after:t-translate-x-[-50%] after:t-transition-all" %}
+<head>
+    <style>
+      html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+
+      body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      .swiper {
+        margin-top:10px;
+        width: 96.4%;
+        height: 50%;
+        border-radius:5px;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .swiper-button-next{
+        color:white;
+      }
+      .swiper-button-prev{
+         color:white;
+      }
+      .swiper-pagination-bullet-active{
+      background: white;
+      }
+    </style>
+</head>
+
+<body>
+<!-- 메인로고자리 -->
+
+<!-- Swiper -->
+<div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+        <!-- 1번 슬라이드 -->
+        <div class="swiper-slide">
+            <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Nail/Nail_1920774.jpg" alt="">
+        </div>
+        <!-- 2번 슬라이드 -->
+        <div class="swiper-slide">
+            <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Ts/0113/Ts_1920774.jpg" alt="">
+        </div>
+        <!-- 3번 슬라이드 -->
+        <div class="swiper-slide">
+            <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Pirate/Pirate_1920774.jpg" alt="">
+        </div>
+        <!-- 4번 슬라이드 -->
+        <div class="swiper-slide">
+            <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Reverse/0117/Reverse_1920774.jpg" alt="">
+        </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+</div>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+</body>
+
+
+
+<section class="section-prod-list">
+    <div class="container">
+        <div class="container">
+            <h1 class="t-text-[1.2rem] t-mt-4 ">Movies</h1>
+            <ul class="t-grid t-grid-cols-1 sm:t-grid-cols-2 md:t-grid-cols- lg:sm:t-grid-cols-4 t-gap-[20px] t-mt-4">
+                {% for movie in movie_list %}
+                <li class="t-flex t-flex-col t-group">
+                    <a data-before="Movies" href="{% url 'mv:detail' movie.id %}"
+                       class="{{img_box_class}} {{img_box_before_class}} {{img_box_after_class}}">
+                        {% if movie.image %}
+                        <img class="t-block t-w-full t-transition-all group-hover:t-scale-110 t-relative t--z-50" src="{{ movie.image.url }}" alt="">
+                        {% else %}
+                        <img class="t-block t-w-full t-transition-all group-hover:t-scale-110 t-relative t--z-50" src="{{ movie.thumb_img_url }}" alt="">
+                        {% endif %}
+                    </a>
+
+                    <a class="t-text-center t-mt-2 t-no-underline t-text-gray-400 group-hover:t-text-blue-500" href="{% url 'mv:detail' movie.id %}">
+                        {{  movie.display_name }}
+                    </a>
+
+                    <a class="t-text-center t-mt-2 t-no-underline t-text-gray-400 group-hover:t-text-blue-500" href="{% url 'mv:detail' movie.id %}">
+                        <span> 평점 : {{ movie.review_point }}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% endwith %}
+{% endwith %}
+{% endwith %}
+
+{%endblock%}

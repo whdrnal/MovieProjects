@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% load humanize %}
+{% load django_bootstrap5 %}
+{%block content %}
+
+<section class="section-prod-detail">
+    <div class="container">
+        <div class="card-header t-font-extrabold t-text-transparent t-text-4xl t-bg-clip-text t-bg-gradient-to-r t-from-purple-400 t-to-red-800">
+            영화제목 : {{ movie.display_name }}
+        </div>
+        <div class="t-bg-dark">
+            <div class="container t-">
+                <img class="t-mt-[20px]" style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="card t-mt-[30px]">
+        <div class="t-text-gray-400">
+            <a class="t-text-red-500" href="{% url 'common:login' %}?next={{request.get_full_path}}">로그인</a> 후 이용해주세요.
+        </div>
+
+        <ul class="list-group list-group-flush ">
+            {% for question in question_list %}
+            <li class="list-group-item">
+                <span class="badge bg-secondary ">{{ forloop.counter }}</span>
+                {{ question.content }}
+                {% if question.user == request.user %}
+                <a href="{% url 'mv:question_delete' movie.id question.id %}" class="btn btn-sm btn-warning"
+                   onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false;">삭제</a>
+                {% endif %}
+                {% if question.user == request.user %}
+                <a href="{% url 'mv:question_modify' movie.id question.id %}"
+                   class="btn btn-sm btn-secondary">수정</a>
+                {% endif %}
+                <br>
+                작성자 : {{ question.user }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% if user.is_authenticated %}
+    <form method="POST" action="{% url 'mv:question_create' movie.id %}">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_button button_type="submit" content="리뷰작성" %}
+        {% bootstrap_button button_type="reset" content="취소" %}
+    </form>
+    {% endif %}
+    </div>
+</section>
+
+
+{% endblock %}

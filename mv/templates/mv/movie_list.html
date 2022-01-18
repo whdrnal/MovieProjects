@@ -123,11 +123,13 @@
 <section class="section-prod-list">
     <div class="container">
         <div class="container">
-            <h1 class="t-text-[1.2rem] t-mt-4 ">Movies</h1>
+
+            <h1 class="t-text-[1.2rem] t-text-white t-mt-4">Movies</h1>
+
             <ul class="t-grid t-grid-cols-1 sm:t-grid-cols-2 md:t-grid-cols- lg:sm:t-grid-cols-4 t-gap-[20px] t-mt-4">
                 {% for movie in movie_list %}
                 <li class="t-flex t-flex-col t-group">
-                    <a data-before="Movies" href="{% url 'mv:detail' movie.id %}"
+                    <a data-before="Review" href="{% url 'mv:detail' movie.id %}"
                        class="{{img_box_class}} {{img_box_before_class}} {{img_box_after_class}}">
                         {% if movie.image %}
                         <img class="t-block t-w-full t-transition-all group-hover:t-scale-110 t-relative t--z-50" src="{{ movie.image.url }}" alt="">
@@ -136,13 +138,13 @@
                         {% endif %}
                     </a>
 
-                    <a class="t-text-center t-mt-2 t-no-underline t-text-gray-400 group-hover:t-text-blue-500" href="{% url 'mv:detail' movie.id %}">
+                    <a class="t-text-center t-mt-2 t-no-underline t-text-gray-300 group-hover:t-text-white" href="{% url 'mv:detail' movie.id %}">
                         {{  movie.display_name }}
                     </a>
 
-                    <a class="t-text-center t-mt-2 t-no-underline t-text-gray-400 group-hover:t-text-blue-500" href="{% url 'mv:detail' movie.id %}">
-                        <span> 평점 : {{ movie.review_point }}</span>
-                    </a>
+                    <div class="t-text-center t-ml-10px t-mt-2 t-text-gray-300 group-hover:t-text-white" href="{% url 'mv:detail' movie.id %}">
+                        <i class="fas fa-heart t-text-red-500"></i>{{ movie.review_point }}
+                    </div>
                 </li>
                 {% endfor %}
             </ul>

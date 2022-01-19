@@ -1,14 +1,14 @@
 {% extends "layout.html" %}
 {% load humanize %}
 {%block content %}
-<main style="border-radius:5px" class="form-signin t-py-[30px] t-bg-sky-500/20" >  <!--로그인창 백그라운드 여기서잡어-->
+<main style="border-radius:5px" class="form-signin t-mt-[20px] t-py-[30px] t-bg-sky-500/10">  <!--로그인창 백그라운드 여기서잡어-->
     <div class="xl:t-mx-[30rem] lg:t-mx-[20rem]">
 
         <center>
-            <img class="t-mb-3" src="https://getbootstrap.kr/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="65" height="100">
+            <img class="t-mb-3" src="https://ifh.cc/g/oLqKIK.png" alt="" width="100" height="100">
         </center>
 
-        <h1 class="t-h-0 t-mb-3 t-fw-normal">로그인 페이지</h1>
+        <h1 class="t-p-0 t-mb-3 t-fw-normal">로그인 페이지</h1>
         <div class="container my-3">
             <form method="post" class="post-form" action="{% url 'common:login' %}">
                 {% csrf_token %}

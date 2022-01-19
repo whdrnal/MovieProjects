@@ -2,23 +2,28 @@
 {% load humanize %}
 {%block content %}
 
-<section class="section-prod-detail">
+<section class="section-prod-detail t-bg-sky-500/10 t-mt-[40px]" style="border-radius:5px">
     <div class="container">
         <div class="container">
-            <ul class="t-grid t-grid-cols-1 sm:t-grid-cols-2 md:t-grid-cols-3 lg:sm:t-grid-cols-4 t-gap-[20px] t-mt-[45px]">
+            <ul class="t-grid t-grid-cols-1 sm:t-grid-cols-2 md:t-grid-cols-3 lg:sm:t-grid-cols-3 t-gap-[100px]">
                 <li class="t-flex t-flex-col t-group">
-                    <img class="t-mt-[20px]" style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
-                    <a class="t-text-center t-mt-2 t-no-underline t-text-gray-300 group-hover:t-text-white" href="{% url 'mv:detail' movie.id %}">
-                        {{  movie.display_name }}
-                    </a>
+                    <img class="t-mt-[30px]" style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
+                    <a class="t-text-center t-mt-[30px] t-no-underline t-text-gray-300 group-hover:t-text-white" href="{% url 'mv:detail' movie.id %}"></a>
+                </li>
+                <li>
+                    <ul class="t-mt-[30px]">
+                        <li style="font-size:1.5em;">{{ movie.name }}</li>
+                        <li>관람객 평점 : {{ movie.review_point}}</li>
+                    </ul>
                 </li>
             </ul>
         </div>
     </div>
 </section>
+
+
 <br>
 <br>
-<div class="t-mt-4 t-ml-4">{{ movie.name }}에 대한
-    <span class="font-gblue t-text-blue-500">{{ movie.question_set.count }}</span> 개의 이야기가 있어요 !</div>
+<div class="t-mt-4 t-ml-4">{{ movie.name }}에 대한 <span class="font-gblue t-text-red-500">{{ movie.question_set.count }}</span> 개의 이야기가 있어요 !</div>
 
 {% endblock %}

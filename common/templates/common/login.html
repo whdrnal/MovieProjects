@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 {% load humanize %}
 {%block content %}
-<main style="border-radius:5px" class="form-signin t-py-[30px] t-bg-yellow-400">  <!--로그인창 백그라운드 여기서잡어-->
+<main style="border-radius:5px" class="form-signin t-py-[30px] t-bg-sky-500/20" >  <!--로그인창 백그라운드 여기서잡어-->
     <div class="xl:t-mx-[30rem] lg:t-mx-[20rem]">
 
         <center>
-            <img class="t-mb-3 " src="https://getbootstrap.kr/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="65" height="100">
+            <img class="t-mb-3" src="https://getbootstrap.kr/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="65" height="100">
         </center>
 
         <h1 class="t-h-0 t-mb-3 t-fw-normal">로그인 페이지</h1>
@@ -24,6 +24,7 @@
                            value="{{ form.password.value|default_if_none:'' }}">
                 </div>
                 <button type="submit" class="t-mt-4  btn btn-outline-light">로그인</button>
+                <a type="button" class="t-mt-4  btn btn-outline-light" href="{% url 'common:signup' %}">회원가입</a>
             </form>
         </div>
     </div>

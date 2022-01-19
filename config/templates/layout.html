@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{% static 'common.css' %}">
     <script defer src="{% static 'common.js' %}"></script>
 </head>
+
 <body class="t-flex t-text-center t-text-white bg-dark">
 {% if messages %}
 {% for message in messages %}
@@ -42,8 +43,11 @@
                     <input type="search" class="form-control form-control-dark" action="search_keyword" name="search_keyword" placeholder="Search" aria-label="Search">
                 </form>
                 <form class="text-end">
-                    <a class="btn btn-outline-light me-2" href="{% url 'common:login' %}">Login</a>
-                    <a type="button" class="btn btn-warning t-text-white" href="{% url 'common:signup' %}">Signup</a>
+                    {% if user.is_authenticated %}
+                    <a class="btn btn-outline-light me-2" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
+                    {% else %}
+                    <a class="btn btn-outline-light me-2" type="button" href="{% url 'common:login' %}">로그인</a>
+                    {% endif %}
                 </form>
             </div>
         </div>

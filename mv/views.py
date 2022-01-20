@@ -12,7 +12,7 @@ def index(request):
     search_keyword = request.GET.get('search_keyword', '')  # 검색어
 
     movie_list = Movie.objects.order_by('-id')
-    if search_keyword:
+    if search_keyword.lower() != "none":
         movie_list = movie_list.filter(
             Q(display_name__icontains=search_keyword) |
             Q(name__icontains=search_keyword)
@@ -26,10 +26,10 @@ def index(request):
 
 def detail(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
-    question_list = Question.objects.order_by('-create_date')
+    question_list = movie.question_set.order_by('-create_date')
 
     form = forms.QuestionForm()
-    context = {'movie': movie, 'form': form, 'movie_id': movie_id, 'question_list': question_list}
+    context = {'movie': movie, 'form': form, 'movie_id': movie_id, 'question_list': question_list, }
     return render(request, 'mv/movie_detail.html', context)
 
 

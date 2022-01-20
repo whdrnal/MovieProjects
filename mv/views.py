@@ -27,8 +27,9 @@ def index(request):
 def detail(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
     question_list = Question.objects.order_by('-create_date')
+
     form = forms.QuestionForm()
-    context = {'movie': movie, 'form': form, 'movie_id': movie.id, 'question_list': question_list}
+    context = {'movie': movie, 'form': form, 'movie_id': movie_id, 'question_list': question_list}
     return render(request, 'mv/movie_detail.html', context)
 
 

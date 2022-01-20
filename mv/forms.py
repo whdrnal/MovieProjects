@@ -9,5 +9,5 @@ class QuestionForm(forms.ModelForm):
             "content",
         ]
         labels = {
-            'content': '　',
+            'content': ' ',
         }

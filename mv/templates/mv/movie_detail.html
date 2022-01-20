@@ -1,29 +1,73 @@
 {% extends "layout.html" %}
 {% load humanize %}
+{% load django_bootstrap5 %}
 {%block content %}
 
-<section class="section-prod-detail t-bg-sky-500/10 t-mt-[40px]" style="border-radius:5px">
+<section class="section-prod-detail t-mt-[40px] t-py-[30px] t-bg-sky-700/30" style="border-radius:15px">
     <div class="container">
         <div class="container">
-            <ul class="t-grid t-grid-cols-1 sm:t-grid-cols-2 md:t-grid-cols-3 lg:sm:t-grid-cols-3 t-gap-[100px]">
+            <ul class="t-flex">
                 <li class="t-flex t-flex-col t-group">
                     <img class="t-mt-[30px]" style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
                     <a class="t-text-center t-mt-[30px] t-no-underline t-text-gray-300 group-hover:t-text-white" href="{% url 'mv:detail' movie.id %}"></a>
                 </li>
-                <li>
-                    <ul class="t-mt-[30px]">
-                        <li style="font-size:1.5em;">{{ movie.name }}</li>
-                        <li>관람객 평점 : {{ movie.review_point}}</li>
-                    </ul>
-                </li>
+                <div className="t-p-4 sm:t-w-1/2 lg:t-w-1/3">
+                    <div className="t-h-full t-border-2 t-border-gray-200 t-border-opacity-60 t-rounded-lg t-overflow-hidden">
+                        <li>
+                            <ul class="t-mt-[30px] t-ml-4 t-text-2xl">
+                                {{ movie.name }}
+                                <a class="btn btn-outline-danger" href="#">
+                                    <i class="fas fa-heart">
+                                        {{ movie.hit_count}}
+                                    </i>
+                                </a>
+                            </ul>
+                        </li>
+                    </div>
+                </div>
             </ul>
         </div>
     </div>
+
 </section>
 
 
-<br>
-<br>
-<div class="t-mt-4 t-ml-4">{{ movie.name }}에 대한 <span class="font-gblue t-text-red-500">{{ movie.question_set.count }}</span> 개의 이야기가 있어요 !</div>
 
+
+<div class="card t-mt-[30px]">
+    <div class="card-header t-text-black">
+        <p>{{ movie.name }}에 대한 <span class="font-gblue t-text-red-500">{{ movie.question_set.count }}</span>
+            개의 이야기가 있어요 !
+        </p>
+    </div>
+    <ul class="list-group list-group-flush">
+        {% for question in question_list %}
+        <li class="t-text-black">
+            <span class="badge bg-secondary ">{{ forloop.counter }}</span>
+            {{ question.content }}
+            {% if question.user == request.user %}
+            <a href="{% url 'mv:question_delete' movie.id question.id %}" class="btn btn-sm btn-warning"
+               onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false;">삭제</a>
+            {% endif %}
+            {% if question.user == request.user %}
+            <a href="{% url 'mv:question_modify' movie.id question.id %}"
+               class="btn btn-sm btn-secondary">수정</a>
+            {% endif %}
+            <br>
+            작성자 : {{ question.user }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% if user.is_authenticated %}
+<div style="placeholder">
+<form method="POST" action="{% url 'mv:question_create' movie.id %}">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% bootstrap_button button_type="submit" content="리뷰작성" %}
+</form>
+{% endif %}
+</div>
+</div>
+</section>
 {% endblock %}

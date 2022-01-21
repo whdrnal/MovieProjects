@@ -40,6 +40,7 @@ def question_create(request, movie_id):
         if form.is_valid():
             question = form.save(commit=False)
             question.movie_id = movie_id
+
             question.user = request.user
             question.save()
             return redirect('mv:detail', movie_id=movie_id)

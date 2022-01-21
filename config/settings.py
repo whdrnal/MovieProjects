@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure--c6=%^bmyiysmx+wijo^(0aw(+siaih3!@h3s#59mb5ya1je^(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'movie',  # DB명
         'USER': 'root',  # DBMS 접속 아이디
-        'PASSWORD': '1234',  # DBMS 접속 비번
+        'PASSWORD': '',  # DBMS 접속 비번
         'HOST': '127.0.0.1',  # DBMS 주소
         'PORT': '3306',  # DBMS 포트
         'OPTIONS': {

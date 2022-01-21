@@ -3,33 +3,32 @@
 {% load django_bootstrap5 %}
 {%block content %}
 
-<section class="section-prod-detail t-align-item-center t-mt-[20px] t-py-[30px] t-bg-gray-900/50" style="border-radius:5px">
+<section class="section-prod-detail t-align-item-center t-mt-[20px] t-py-[30px] t-bg-gray-900/80" style="border-radius:5px">
     <img class="t-mx-auto t-w-[30rem]"  style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
-    <div class="card t-mt-[30px]">
-        <div class="card-header t-text-black">
-            <p>{{ movie.name }}에 대한 <span class="font-gblue t-text-red-500">{{ movie.question_set.count }}</span>
-                개의 이야기가 있어요 !
-            </p>
-        </div>
-        <ul class="list-group list-group-flush">
+    <p class="t-mt-[3rem]">리뷰 총 <span class="font-gblue t-text-red-500">{{ movie.question_set.count }}</span>
+        건
+    </p>
+
+<!--    <div class="card t-bg-white t-mt-[30px]">
+        <ul class="list-group">
             {% for question in question_list %}
-            <li class="t-text-black">
+            <li class="list-group-item t-flex justify-content-between align-items-center">
                 <span class="badge bg-secondary ">{{ forloop.counter }}</span>
                 {{ question.content }}
                 {% if question.user == request.user %}
-                <a href="{% url 'mv:question_delete' movie.id question.id %}" class="btn btn-sm btn-warning"
-                   onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false;">삭제</a>
+                <a href="{% url 'mv:question_delete' movie.id question.id %}" class="btn btn-outline-danger" onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false;">삭제</a>
                 {% endif %}
                 {% if question.user == request.user %}
-                <a href="{% url 'mv:question_modify' movie.id question.id %}"
-                   class="btn btn-sm btn-secondary">수정</a>
+                <a href="{% url 'mv:question_modify' movie.id question.id %}" class="btn btn-outline-secondary">수정</a>
                 {% endif %}
                 <br>
-                작성자 : {{ question.user }}
             </li>
             {% endfor %}
         </ul>
-    </div>
+    </div>-->
+
+
+
     {% if user.is_authenticated %}
     <form method="POST" action="{% url 'mv:question_create' movie.id %}">
         {% csrf_token %}
@@ -39,4 +38,5 @@
     {% endif %}
     </div>
 </section>
+
 {% endblock %}

@@ -17,8 +17,62 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{% static 'common.css' %}">
     <script defer src="{% static 'common.js' %}"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
+<style>
+    body,html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    }
+
+    .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.15s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    width: 80%;
+    caret-color:red;
+    }
+
+    .searchbar:hover > .search_icon{
+
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
+</style>
 <!--<body class="t-flex t-text-center t-text-white bg-black">
 {% if messages %}
 {% for message in messages %}
@@ -29,27 +83,31 @@
 {% endif %}
 </body>-->
 
+
 <body class="t-flex text-center t-text-white bg-black">
 <div class="container t-flex flex-column">
-    <header class="p-3 bg-black t-text-white t-justify-content-center">
+    <header class="p-3 bg-black t-text-white t-justify-content-center t-p-0">
         <div class="container">
             <div class="t-flex t-flex-wrap align-items-center justify-content-center">
                 <a href="/"><img src="https://ifh.cc/g/oLqKIK.png"></a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto justify-content-center">
-                    <li><a href="#" class="nav-link t-text-white hover:t-text-white">Movies</a></li>
+    <!--                <li><a href="#" class="nav-link t-text-white hover:t-text-white">Movies</a></li>
                     <li><a href="#" class="nav-link t-text-white hover:t-text-white">이벤트</a></li>
-                    <li><a href="#" class="nav-link t-text-white hover:t-text-white">스토어</a></li>
+                    <li><a href="#" class="nav-link t-text-white hover:t-text-white">스토어</a></li>-->
                 </ul>
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{% url 'mv:index' %}">
-                    <input type="search" class="form-control form-control-dark" action="search_keyword" name="search_keyword" placeholder="Search" aria-label="Search">
+                    <div class="searchbar">
+                        <input class="search_input" action="search_keyword" name="search_keyword" type="search" placeholder="Search">
+                        <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                    </div>
                 </form>
-                <form class="text-end">
+<!--                <form class="text-end">
                     {% if user.is_authenticated %}
                     <a class="btn btn-outline-light me-2" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
                     {% else %}
                     <a class="btn btn-outline-light me-2" type="button" href="{% url 'common:login' %}">로그인</a>
                     {% endif %}
-                </form>
+                </form>-->
             </div>
         </div>
     </header>
@@ -59,9 +117,9 @@
         {%endblock%}
     </section>
 
-<!--    <footer class="blog-footer t-mt-[45px]">
-        <p class="text-muted ">&copy; FOOTER </p>
-    </footer>-->
+    <!--    <footer class="blog-footer t-mt-[45px]">
+            <p class="text-muted ">&copy; FOOTER </p>
+        </footer>-->
 </div>
 </body>
 </html>

@@ -3,17 +3,25 @@
 
 {%block content %}
 
-<div class="container my-3 ">
+<div class="container">
     <form method="post" class="post-form">
         {% csrf_token %}
         {% include "form_errors.html" %}
-        <div class="form-group">
-            <label for="content">리뷰 수정하기</label>
-            <textarea class="form-control" name="content" id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
-        </div>
-        <div class="t-mt-4">
-            <button type="submit" class="btn btn-primary">저장하기</button>
-        </div>
+        <section class="section-prod-detail t-align-item-center t-mt-[20px] t-py-[30px] t-bg-gray-900/80">
+            <center>
+                <img class="t-mb-3" src="https://ifh.cc/g/oLqKIK.png" alt="" width="100" height="100">
+            </center>
+
+            <h1 class="t-p-0 t-mb-3 t-fw-normal">리뷰 수정 페이지</h1>
+            <div class="form-group p-4">
+                <label for="content"></label>
+                <textarea class="form-control" name="content" id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+            </div>
+            <div class="t-mt-4">
+                <button type="submit" class="btn btn-primary">저장하기</button>
+            </div>
+        </section>
+
     </form>
 </div>
 

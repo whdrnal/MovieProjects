@@ -58,7 +58,7 @@
     .searchbar:hover > .search_icon{
 
     background: white;
-    color: #e74c3c;
+    color: #FF0066;
     }
 
     .search_icon{
@@ -72,6 +72,12 @@
     color:white;
     text-decoration:none;
     }
+    .main{
+    width: auto; height: auto;
+    max-width: 100px;
+    max-height: 100px;
+    }
+
 </style>
 <!--<body class="t-flex t-text-center t-text-white bg-black">
 {% if messages %}
@@ -83,17 +89,18 @@
 {% endif %}
 </body>-->
 
-
 <body class="t-flex text-center t-text-white bg-black">
-<div class="container t-flex flex-column">
-    <header class="p-3 bg-black t-text-white t-justify-content-center t-p-0">
+<div class="container t-flex flex-column t-'text-decoration-line:none">
+    <header class="p-3 bg-black t-text-white t-justify-content-center">
         <div class="container">
             <div class="t-flex t-flex-wrap align-items-center justify-content-center">
-                <a href="/"><img src="https://ifh.cc/g/oLqKIK.png"></a>
+                <div class="main">
+                    <a href="/"><img src="https://ifh.cc/g/GDOzCI.png"></a>
+                </div>
                 <ul class="nav col-12 col-lg-auto me-lg-auto justify-content-center">
-    <!--                <li><a href="#" class="nav-link t-text-white hover:t-text-white">Movies</a></li>
-                    <li><a href="#" class="nav-link t-text-white hover:t-text-white">이벤트</a></li>
-                    <li><a href="#" class="nav-link t-text-white hover:t-text-white">스토어</a></li>-->
+                    <!--                <li><a href="#" class="nav-link t-text-white hover:t-text-white">Movies</a></li>
+                                    <li><a href="#" class="nav-link t-text-white hover:t-text-white">이벤트</a></li>
+                                    <li><a href="#" class="nav-link t-text-white hover:t-text-white">스토어</a></li>-->
                 </ul>
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{% url 'mv:index' %}">
                     <div class="searchbar">
@@ -101,25 +108,22 @@
                         <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
                     </div>
                 </form>
-<!--                <form class="text-end">
+                <form class="text-end">
                     {% if user.is_authenticated %}
-                    <a class="btn btn-outline-light me-2" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
+                    <a class="t-text-white hover:t-text-white me-2" href="{% url 'common:logout' %}">{{ user.username }} 님</a>
                     {% else %}
-                    <a class="btn btn-outline-light me-2" type="button" href="{% url 'common:login' %}">로그인</a>
+                    <a class="t-text-white hover:t-text-white me-2" href="{% url 'common:login' %}">login</a>
                     {% endif %}
-                </form>-->
+                    <a class="t-text-white hover:t-text-white me-2" href="{% url 'common:signup' %}">signup</a>
+                </form>
             </div>
         </div>
     </header>
 
-    <section class="t-flex t-flex-col t-text-center">
+    <section class="t-text-center m-4">
         {%block content%}
         {%endblock%}
     </section>
-
-    <!--    <footer class="blog-footer t-mt-[45px]">
-            <p class="text-muted ">&copy; FOOTER </p>
-        </footer>-->
 </div>
 </body>
 </html>

@@ -18,5 +18,9 @@
   "homepage": "https://github.com/jhs512/site224#readme",
   "devDependencies": {
     "tailwindcss": "^3.0.15"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "ngrok": "^4.3.0"
   }
 }

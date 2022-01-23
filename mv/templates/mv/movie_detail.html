@@ -3,13 +3,16 @@
 {% load django_bootstrap5 %}
 {%block content %}
 
-<section class="section-prod-detail t-align-item-center t-mt-[20px] t-py-[30px] t-bg-gray-900/80" style="border-radius:5px">
-    <img class="t-mx-auto t-w-[30rem]"  style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
+<section class="section-prod-detail t-align-item-center t-mt-[20px] t-py-[30px]" style="border-radius:5px">
+    <img class="t-w-[20rem]"  style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
+    <div class="t-mt-[2rem]">
+        <a href="{% url 'common:login' %}?next={{request.get_full_path}}">로그인</a> 후 이용해주세요.
+    </div>
     <p class="t-mt-[3rem]">리뷰 총 <span class="font-gblue t-text-red-500">{{ movie.question_set.count }}</span>
         건
     </p>
 
-<!--    <div class="card t-bg-white t-mt-[30px]">
+    <div class="t-bg-white t-mt-[30px]" style="border-radius:5px">
         <ul class="list-group">
             {% for question in question_list %}
             <li class="list-group-item t-flex justify-content-between align-items-center">
@@ -25,9 +28,7 @@
             </li>
             {% endfor %}
         </ul>
-    </div>-->
-
-
+    </div>
 
     {% if user.is_authenticated %}
     <form method="POST" action="{% url 'mv:question_create' movie.id %}">

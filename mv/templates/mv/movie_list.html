@@ -22,9 +22,7 @@
       }
 
       .swiper {
-        margin-top:10px;
         width: 96.4%;
-        height: 50%;
         border-radius:5px;
       }
 
@@ -32,6 +30,7 @@
         text-align: center;
         font-size: 18px;
         background: #fff;
+
 
 
         /* Center slide text vertically */
@@ -52,7 +51,7 @@
       .swiper-slide img {
         display: block;
         width: 100%;
-        height: 100%;
+        height: auto%;
         object-fit: cover;
       }
 
@@ -123,8 +122,7 @@
 <section class="section-prod-list">
     <div class="container p-0">
         <div class="container">
-            <br>
-            <br>
+            <div class="t-mt-4 t-text-left">재밌게 봤던 영화에 리뷰를 달아보세요 !</div>
             <ul class="t-grid t-grid-cols-1 sm:t-grid-cols-2 md:t-grid-cols-3 lg:sm:t-grid-cols-4 t-gap-[20px] t-mt-4">
                 {% for movie in movie_list %}
                 <li class="t-flex t-flex-col t-group">

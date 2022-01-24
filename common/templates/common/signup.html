@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% load humanize %}
 {%block content %}
-<div style="border-radius:5px" class="container t-mx-auto t-py-[30px]">     <!--로그인창 백그라운드 여기서잡어-->
+<div style="border-radius:5px" class="container t-mx-auto t-py-[40px] t-mt-[6rem]">     <!--로그인창 백그라운드 여기서잡어-->
     <div class="xl:t-mx-[25rem] lg:t-mx-[20rem]">
 
 
@@ -34,7 +34,6 @@
                 <input type="text" class="form-control" placeholder="이메일" name="email" id="email"
                        value="{{ form.email.value|default_if_none:'' }}">
             </div>
-
             <button type="submit" class="t-mt-4  btn btn-outline-light me-2">회원가입</button>
         </form>
     </div>

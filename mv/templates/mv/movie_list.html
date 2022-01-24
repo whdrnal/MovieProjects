@@ -22,7 +22,7 @@
       }
 
       .swiper {
-        width: 96.4%;
+        width: 100%;
         border-radius:5px;
       }
 
@@ -53,6 +53,7 @@
         width: 100%;
         height: auto%;
         object-fit: cover;
+        margin-top: 3.4rem;
       }
 
       .swiper-button-next{
@@ -64,6 +65,7 @@
       .swiper-pagination-bullet-active{
       background: white;
       }
+
     </style>
 </head>
 
@@ -147,6 +149,22 @@
             </ul>
         </div>
     </div>
+    <hr class="t-mt-[3rem]">
+    상영중인 영화관 <br>
+
+    <p>
+        <spen style="color:#FF0066">이미지 클릭시</spen> 이동 됩니다.
+    </p>
+
+    <center class="t-mt-[3rem]">
+        <ul class="t-grid t-grid-cols-1 sm:t-grid-cols-2 md:t-grid-cols-3 lg:sm:t-grid-cols-4 t-gap-[20px] t-mt-4">
+            <a href="https://www.cgv.co.kr/"><img src="https://ifh.cc/g/SReWy3.png"></a>
+            <a href="https://www.megabox.co.kr/"><img src="https://ifh.cc/g/QbiuUI.png"></a>
+            <a href="https://www.lottecinema.co.kr/NLCHS"><img src="https://ifh.cc/g/ucBqr6.png"></a>
+            <a href="https://www.cineq.co.kr/"><img src="https://ifh.cc/g/Pj16RH.png"></a>
+        </ul>
+    </center>
+    <br>
 </section>
 
 {% endwith %}

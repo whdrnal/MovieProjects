@@ -3,8 +3,8 @@
 {%block content %}
 
 
-<main style="border-radius:5px" class="form-signin t-mt-[20px] t-py-[30px]">  <!--로그인창 백그라운드 여기서잡어-->
-    <div class="xl:t-mx-[25rem] lg:t-mx-[20rem]">
+<main style="border-radius:5px" class="form-signin t-mt-[6rem] t-py-[40px] t-bg-red-500">  <!--로그인창 백그라운드 여기서잡어-->
+    <div class="xl:t-mx-[43rem] lg:t-mx-[20rem]">
         <h4 class="t-p-0 t-mb-3 t-fw-normal">로그인 페이지</h4>
         <div class="container my-3">
             <form method="post" class="post-formt" action="{% url 'common:login' %}">
@@ -20,8 +20,7 @@
                     <input type="password" class="form-control" placeholder="비밀번호" name="password" id="password"
                            value="{{ form.password.value|default_if_none:'' }}">
                 </div>
-                <button type="submit" class="t-mt-4  btn btn-outline-light">로그인</button>
-
+                <button type="submit" class="t-mt-4 btn btn-outline-light">로그인</button>
             </form>
         </div>
     </div>

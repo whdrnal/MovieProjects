@@ -3,29 +3,41 @@
 {% load django_bootstrap5 %}
 {%block content %}
 
-<section class="section-prod-detail t-align-item-center t-mt-[20px] t-py-[30px]" style="border-radius:5px">
-    <img class="t-w-[20rem]"  style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
+<section class="col-12 col-lg-auto me-lg-auto" style="border-radius:5px">
+    <img class="t-mx-auto t-w-[20rem]"  style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
     <div class="t-mt-[2rem]">
         <a href="{% url 'common:login' %}?next={{request.get_full_path}}">로그인</a> 후 이용해주세요.
     </div>
-    <p class="t-mt-[3rem]">리뷰 총 <span class="font-gblue t-text-red-500">{{ movie.question_set.count }}</span>
+    <p class="t-mt-[1rem]">리뷰 총 <span class="font-gblue t-text-red-500">{{ movie.question_set.count }}</span>
         건
     </p>
-
-    <div class="t-bg-white t-mt-[30px]" style="border-radius:5px">
+    <div class="t-mt-[30px]" style="border-radius:5px">
         <ul class="list-group">
             {% for question in question_list %}
-            <li class="list-group-item t-flex justify-content-between align-items-center">
-                <span class="badge bg-secondary ">{{ forloop.counter }}</span>
-                {{ question.content }}
-                {% if question.user == request.user %}
-                <a href="{% url 'mv:question_delete' movie.id question.id %}" class="btn btn-outline-danger" onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false;">삭제</a>
-                {% endif %}
-                {% if question.user == request.user %}
-                <a href="{% url 'mv:question_modify' movie.id question.id %}" class="btn btn-outline-secondary">수정</a>
-                {% endif %}
-                <br>
+            <li class="list-group-item t-flex t-text-left t-justify-content-between align-items-center">
+                <img src="https://ifh.cc/g/KUL8gO.png" alt="">
+                <div class="t-flex t-float-right t--mt-[40px]">
+                    {% if question.user == request.user %}
+                    <a href="{% url 'mv:question_delete' movie.id question.id %}" class="btn btn-outline-danger" onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false;">삭제</a>
+                    {% endif %}
+                    {% if question.user == request.user %}
+                    <a href="{% url 'mv:question_modify' movie.id question.id %}" class="btn btn-outline-secondary">수정</a>
+                    {% endif %}
+                </div>
+
+                <div class="t-mt-[10px] t-ml-[10px]">
+                    {{ question.user }}
+                </div>
+
+                <div class="t-mt-[2rem]" style="word-break:break-all">
+                    {{ question.content }}
+                </div>
+
+                <div class="t-text-[0.80rem] t-mt-[2rem]">
+                    {{ question.create_date }}
+                </div>
             </li>
+            <hr style="height:0.1px">
             {% endfor %}
         </ul>
     </div>
@@ -39,5 +51,4 @@
     {% endif %}
     </div>
 </section>
-
 {% endblock %}

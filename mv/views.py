@@ -43,6 +43,7 @@ def question_create(request, movie_id):
 
             question.user = request.user
             question.save()
+            messages.success(request, "질문이 등록되었습니다.")
             return redirect('mv:detail', movie_id=movie_id)
     return redirect('mv:detail', movie_id=movie_id)
 

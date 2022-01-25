@@ -21,20 +21,21 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-black">
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top t-bg-black">
     <div class="container-fluid">
         <a href="/"><img class="t-w-[3rem]" src="https://ifh.cc/g/GDOzCI.png"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon "></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 {% if user.is_authenticated %}
-                <a class="btn btn-outline t-text-white hover:t-text-red me-2" href="{% url 'common:logout' %}">{{ user.username }}</a>
+                <a class="btn btn-outline t-text-gray-400 hover:t-text-white me-2" href="{% url 'common:logout' %}">{{ user.username }}</a>
                 {% else %}
-                <a class="btn t-text-white hover:t-text-white me-2" href="{% url 'common:login' %}">로그인</a>
+                <a class="btn t-text-gray-400  hover:t-text-white me-2" href="{% url 'common:login' %}">로그인</a>
                 {% endif %}
-                <a class="btn t-text-white hover:t-text-white me-2" href="{% url 'common:signup' %}">회원가입</a>
+                <a class="btn t-text-gray-400  hover:t-text-white me-2" href="{% url 'common:signup' %}">회원가입</a>
             </ul>
             <form class="t-flex" action="{% url 'mv:index' %}">
                 <input class="form-control me-2" type="search" name="search_keyword" placeholder="영화를 검색해주세요" aria-label="Search">
@@ -47,6 +48,16 @@
 <body class="t-bg-black">
 
 <section class="t-text-center t-text-white">
+    <!--    {% if messages %}
+            <div class="messages t-mt-[50px]">
+                {% for message in messages %}
+                    <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+                        {{ message.tags }}
+                        {{ message.message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}-->
     {%block content%}
     {%endblock%}
 </section>

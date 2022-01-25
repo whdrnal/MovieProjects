@@ -16,6 +16,7 @@ class Question(models.Model):
     subject = models.CharField(max_length=200)
     content = models.TextField()
     create_date = models.DateTimeField(auto_now_add=True)
+    voter = models.ManyToManyField(User, related_name='voter_question')
 
 
 class Movie(models.Model):
@@ -30,6 +31,7 @@ class Movie(models.Model):
     review_count = models.PositiveIntegerField('리뷰수', default=0)
     review_point = models.PositiveIntegerField('리뷰평점', default=0)
     image = models.ImageField(upload_to=f"mv/", blank=True, null=True)
+    voter = models.ManyToManyField(User, related_name='voter_movie',null=True,blank=True)
 
     def thumb_img_url(self):
         img_name = self.category.name
@@ -59,7 +61,7 @@ class Answer(models.Model):
     modify_date = models.DateTimeField(null=True, blank=True)
     content = models.TextField()
     create_date = models.DateTimeField(auto_now_add=True)
+    voter = models.ManyToManyField(User, related_name='voter_answer')
 
     def __str__(self):
         return f"{self.display_name} - {self.mv}"
-

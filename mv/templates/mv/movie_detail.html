@@ -6,14 +6,17 @@
 
 <section class="col-12 col-lg-auto me-lg-auto" style="border-radius:5px">
     <div class="t-flex t-justify-center">
-        <img class="t-w-[25rem] t-mt-[6rem]"  style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
+        <img class="t-w-[26rem] t-mt-[6rem]"  style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
     </div>
     <div class="t-mt-[3rem]">
         <a href="{% url 'common:login' %}?next={{request.get_full_path}}">로그인</a> 후 리뷰 작성을 할수 있습니다.
     </div>
-    <p class="">리뷰 총 <span class="font-gblue t-text-red-500">{{ movie.question_set.count }}</span>
-        건
+<div>
+    <p class="t-mt-[10px] t-ml-[1rem]">리뷰 <span class="t-text-red-500">{{ movie.question_set.count }}</span> ꒐
+        추천 <a class="far fa-thumbs-up t-text-blue-500" href="{% url 'mv:vote_movie' movie.id %}">
+        </a> {{movie.voter.count}}
     </p>
+</div>
     <div class="t-px-[1rem] t-mt-[30px]">
         <ul class="list-group">
             {% for question in question_list %}
@@ -31,7 +34,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="t-flex t-mt-[3rem]">
+                <div class="t-flex t-mt-[4rem]">
                     {% if question.user == request.user %}
                     <a href="{% url 'mv:question_delete' movie.id question.id %}" class="btn btn-outline-danger" onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false;">삭제</a>
                     {% endif %}
@@ -60,9 +63,23 @@
         </form>
         {% endif %}
     </div>
-
     <br>
     <br>
     </div>
+
+    <script type='text/javascript'>
+$(document).ready(function(){
+    $(".delete").on('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+    });
+    $(".recommend").on('click', function() {
+        if(confirm("정말로 추천하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+    });
+});
+</script>
 </section>
 {% endblock %}

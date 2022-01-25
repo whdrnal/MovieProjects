@@ -23,13 +23,13 @@
 
       .swiper {
         width: 100%;
-        border-radius:5px;
       }
 
       .swiper-slide {
         text-align: center;
         font-size: 18px;
-        background: #fff;
+        background: #fffff;
+        margin-top:4rem;
 
 
 
@@ -53,7 +53,6 @@
         width: 100%;
         height: auto%;
         object-fit: cover;
-        margin-top: 3.4rem;
       }
 
       .swiper-button-next{
@@ -61,6 +60,7 @@
       }
       .swiper-button-prev{
          color:white;
+
       }
       .swiper-pagination-bullet-active{
       background: white;
@@ -92,8 +92,6 @@
             <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Reverse/0117/Reverse_1920774.jpg" alt="">
         </div>
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
     <div class="swiper-pagination"></div>
 </div>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -124,7 +122,7 @@
 <section class="section-prod-list">
     <div class="container p-0">
         <div class="container">
-            <div class="t-mt-4 t-text-left">재밌게 봤던 영화에 리뷰를 달아보세요 !</div>
+            <br>
             <ul class="t-grid t-grid-cols-1 sm:t-grid-cols-2 md:t-grid-cols-3 lg:sm:t-grid-cols-4 t-gap-[20px] t-mt-4">
                 {% for movie in movie_list %}
                 <li class="t-flex t-flex-col t-group">
@@ -153,7 +151,7 @@
     상영중인 영화관 <br>
 
     <p>
-        <spen style="color:#FF0066">이미지 클릭시</spen> 이동 됩니다.
+        <spen style="color:#FF0066">이미지를 클릭</spen> 시 이동 됩니다.
     </p>
 
     <center class="t-mt-[3rem]">

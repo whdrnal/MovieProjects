@@ -1,41 +1,63 @@
 {% extends "layout.html" %}
 {% load humanize %}
 {%block content %}
-<div style="border-radius:5px" class="container t-mx-auto t-py-[40px] t-mt-[6rem]">     <!--로그인창 백그라운드 여기서잡어-->
-    <div class="xl:t-mx-[25rem] lg:t-mx-[20rem]">
+<head>
 
 
-        <h4 class="t-h-0 t-mb-3 t-fw-normal">회원가입 페이지</h4>
-        <form method="post" class="post-form" action="{% url 'common:signup' %}">
+<style>
+@CHARSET "UTF-8";
 
-            {% csrf_token %}
-            {% include "form_errors.html" %}
+{
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+}
 
-            <div class="form-group">
-                <label for="username"></label>
-                <input type="text" class="form-control" placeholder="아이디" name="username" id="username"
-                       value="{{ form.username.value|default_if_none:'' }}">
-            </div>
+body {
+	background: #333 !important;
+}
 
-            <div class="form-group">
-                <label for="password1"></label>
-                <input type="password" class="form-control" placeholder="비밀번호" name="password1" id="password1"
-                       value="{{ form.password1.value|default_if_none:'' }}">
-            </div>
+.login-form {
+	margin: 100px auto;
+	max-width: 300px;
 
-            <div class="form-group">
-                <label for="password2"></label>
-                <input type="password" class="form-control" placeholder="비밀번호 확인" name="password2" id="password2"
-                       value="{{ form.password2.value|default_if_none:'' }}">
-            </div>
+    </style>
+</head>
 
-            <div class="form-group">
-                <label for="email"></label>
-                <input type="text" class="form-control" placeholder="이메일" name="email" id="email"
-                       value="{{ form.email.value|default_if_none:'' }}">
-            </div>
-            <button type="submit" class="t-mt-4  btn btn-outline-light me-2">회원가입</button>
-        </form>
-    </div>
-</div>
+<body>
+<section class="login-form t-justify-between">
+    <form method="post" class="post-form" action="{% url 'common:signup' %}">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+
+        <img class="t-ml-[8rem]" src="https://ifh.cc/g/GDOzCI.png" alt="아이디" width="50px">
+        <div class="form-group t-text-left">
+            <label for="username">아이디</label>
+            <input type="text" class="form-control" placeholder="Username" name="username" id="username"
+                   value="{{ form.username.value|default_if_none:'' }}">
+        </div>
+
+        <div class="form-group t-text-left">
+            <label for="password1">비밀번호</label>
+            <input type="password" class="form-control" placeholder="Password" name="password1" id="password1"
+                   value="{{ form.password1.value|default_if_none:'' }}">
+        </div>
+
+        <div class="form-group t-text-left">
+            <label for="password2">비밀번호 확인</label>
+            <input type="password" class="form-control" placeholder="Password" name="password2" id="password2"
+                   value="{{ form.password2.value|default_if_none:'' }}">
+        </div>
+
+        <div class="form-group t-text-left">
+            <label for="email">이메일</label>
+            <input type="text" class="form-control" placeholder="Email" name="email" id="email"
+                   value="{{ form.email.value|default_if_none:'' }}">
+        </div>
+        <button type="submit" name="go" class="btn btn-block btn-danger">회원가입</button>
+    </form>
+    </form>
+</section>
+</body>
 {% endblock %}

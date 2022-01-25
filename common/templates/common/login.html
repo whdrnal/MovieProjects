@@ -2,29 +2,61 @@
 {% load humanize %}
 {%block content %}
 
+<head>
+    <style>
+        @CHARSET "UTF-8";
 
-<main style="border-radius:5px" class="form-signin t-mt-[6rem] t-py-[40px] t-bg-red-500">  <!--로그인창 백그라운드 여기서잡어-->
-    <div class="xl:t-mx-[43rem] lg:t-mx-[20rem]">
-        <h4 class="t-p-0 t-mb-3 t-fw-normal">로그인 페이지</h4>
-        <div class="container my-3">
-            <form method="post" class="post-formt" action="{% url 'common:login' %}">
-                {% csrf_token %}
-                {% include "form_errors.html" %}
-                <div class="form-group">
-                    <label for="username"></label>
-                    <input type="text" class="form-control" placeholder="아이디" name="username" id="username"
-                           value="{{ form.username.value|default_if_none:'' }}">
-                </div>
-                <div class="form-group">
-                    <label for="password"></label>
-                    <input type="password" class="form-control" placeholder="비밀번호" name="password" id="password"
-                           value="{{ form.password.value|default_if_none:'' }}">
-                </div>
-                <button type="submit" class="t-mt-4 btn btn-outline-light">로그인</button>
-            </form>
-        </div>
-    </div>
-</main>
+* {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+}
+
+body {
+	background: #333 !important;
+}
+
+.login-form {
+	margin: 100px auto;
+	max-width: 300px;
+}
+
+    </style>
+</head>
+
+<body>
+<section class="login-form">
+    <form class="t-mt-[rem]" method="post" action="" role="login">
+        <form method="post" class="post-form" action="{% url 'common:login' %}">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
 
 
+            <img class="t-ml-[8rem]" src="https://ifh.cc/g/GDOzCI.png" alt="아이디" width="50px">
+            <div class="form-group t-justify-between t-text-left">
+                <label class="" for="username">아이디</label>
+                <input type="text" class="form-control" placeholder="Username" name="username" id="username"
+                       value="{{ form.username.value|default_if_none:'' }}">
+            </div>
+
+            <div class="form-group t-text-left">
+                <label for="password">비밀번호</label>
+                <input type="password" class="form-control" placeholder="Password" name="password" id="password"
+                       value="{{ form.password1.value|default_if_none:'' }}">
+            </div>
+
+            <button type="submit" name="go" class="btn btn-block btn-danger">로그인</button>
+
+            <div class="t-flex t-mt-[30px] t-ml-[4.0rem]">
+                <a class="t-text-gray-400 hover:t-text-gray-300" href="#">아이디찾기</a>
+                &nbsp;
+                &nbsp;
+                <a class="t-text-gray-400 hover:t-text-gray-300" href="#">비밀번호찾기</a>
+            </div>
+        </form>
+    </form>
+</section>
+
+</body>
 {% endblock %}

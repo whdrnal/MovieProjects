@@ -4,17 +4,17 @@
 {%block content %}
 
 
-<section class="col-12 col-lg-auto me-lg-auto t-mt-[6rem]" style="border-radius:5px">
+<section class="col-12 col-lg-auto me-lg-auto" style="border-radius:5px">
     <div class="t-flex t-justify-center">
-        <img class="t-w-[20rem]"  style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
+        <img class="t-w-[25rem] t-mt-[6rem]"  style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
     </div>
     <div class="t-mt-[3rem]">
-        <a href="{% url 'common:login' %}?next={{request.get_full_path}}">로그인</a> 후 이용해주세요.
+        <a href="{% url 'common:login' %}?next={{request.get_full_path}}">로그인</a> 후 리뷰 작성을 할수 있습니다.
     </div>
     <p class="">리뷰 총 <span class="font-gblue t-text-red-500">{{ movie.question_set.count }}</span>
         건
     </p>
-    <div class="t-px-[3rem] t-mt-[30px]">
+    <div class="t-px-[1rem] t-mt-[30px]">
         <ul class="list-group">
             {% for question in question_list %}
             <li class="list-group-item" style="border-radius:5px">
@@ -45,7 +45,13 @@
             {% endfor %}
         </ul>
     </div>
-    <div class="t-mx-[3rem]">
+    <center class="t-mt-[1rem]">
+        <img src="https://ifh.cc/g/GDOzCI.png" width="50px">
+        <p class="t-mt-[15px]">
+            여러분의 소중한 리뷰를 남겨주세요
+        </p>
+    </center>
+    <div>
         {% if user.is_authenticated %}
         <form method="POST" action="{% url 'mv:question_create' movie.id %}">
             {% csrf_token %}
@@ -54,6 +60,7 @@
         </form>
         {% endif %}
     </div>
+
     <br>
     <br>
     </div>

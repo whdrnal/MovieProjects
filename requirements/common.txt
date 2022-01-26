@@ -1,0 +1,7 @@
+Django
+mysqlclient
+django-bootstrap5
+pillow
+django-debug-toolbar
+requests
+django-dotenv

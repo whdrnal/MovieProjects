@@ -9,11 +9,11 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     # 서드파티
     'django_bootstrap5',
-    'debug_toolbar',
     'django_pydenticon',
 ]
 
@@ -84,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'movie',  # DB명
         'USER': 'root',  # DBMS 접속 아이디
-        'PASSWORD': '1234',  # DBMS 접속 비번
+        'PASSWORD': '',  # DBMS 접속 비번
         'HOST': '127.0.0.1',  # DBMS 주소
         'PORT': '3306',  # DBMS 포트
         'OPTIONS': {
@@ -133,7 +132,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -144,4 +143,6 @@ LOGIN_REDIRECT_URL = '/'
 
 # 로그아웃시 이동하는 URL
 LOGOUT_REDIRECT_URL = '/'
+
+CSRF_TRUSTED_ORIGINS = ['https://movieview.awesomestie.kr']
 

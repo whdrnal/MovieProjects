@@ -530,6 +530,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 4.0rem;
 }
 
+.t-mt-\[2rem\] {
+  margin-top: 2rem;
+}
+
 .t-mt-\[3rem\] {
   margin-top: 3rem;
 }
@@ -540,10 +544,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-ml-\[1rem\] {
   margin-left: 1rem;
-}
-
-.t-mt-\[2rem\] {
-  margin-top: 2rem;
 }
 
 .t-mt-\[4rem\] {
@@ -578,6 +578,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 1rem;
 }
 
+.t-mt-\[0rem\] {
+  margin-top: 0rem;
+}
+
 .t-block {
   display: block;
 }
@@ -590,8 +594,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: grid;
 }
 
-.t-w-\[25rem\] {
-  width: 25rem;
+.t-w-\[21\.5rem\] {
+  width: 21.5rem;
 }
 
 .t-w-full {
@@ -643,6 +647,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 0px;
 }
 
+.t-p-1 {
+  padding: 0.25rem;
+}
+
+.t-p-2 {
+  padding: 0.5rem;
+}
+
 .t-px-\[1rem\] {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -686,9 +698,19 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 
+.t-text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .t-text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.t-text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
 .t-no-underline {
@@ -841,6 +863,11 @@ html > body {
 .hover\:t-text-gray-300:hover {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-black:hover {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .t-group:hover .group-hover\:t-scale-110 {

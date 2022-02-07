@@ -17,7 +17,6 @@ def index(request):
             Q(display_name__icontains=search_keyword) |
             Q(name__icontains=search_keyword)
         ).distinct()
-
     question_list = Question.objects.order_by('-create_date')
 
     context = {'question_list': question_list, 'movie_list': movie_list, 'search_keyword': search_keyword}
@@ -41,6 +40,7 @@ def question_create(request, movie_id):
             question = form.save(commit=False)
             question.movie_id = movie_id
             question.user = request.user
+            question.score
             question.save()
             messages.success(request, "질문이 등록되었습니다.")
             return redirect('mv:detail', movie_id=movie_id)
@@ -82,7 +82,6 @@ def question_delete(request, movie_id, question_id):
 
 @login_required(login_url='common:login')
 def vote_question(request, movie_id):
-
     question = get_object_or_404(Question, pk=movie_id)
     if request.user == question.user:
         messages.error(request, '본인이 작성한 글은 추천할수 없습니다')
@@ -93,9 +92,9 @@ def vote_question(request, movie_id):
 
 @login_required(login_url='common:login')
 def vote_movie(request, movie_id):
-
     movie = get_object_or_404(Movie, pk=movie_id)
     movie.voter.add(request.user)
-    messages.success(request,movie.voter)
+    messages.success(request, movie.voter)
 
     return redirect('mv:detail', movie_id=movie_id)
+

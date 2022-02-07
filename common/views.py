@@ -13,7 +13,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)  # 사용자 인증
             login(request, user)  # 로그인
-
+            messages.success(request, "회원가입 완료되었습니다.")
             return redirect('index')
     else:
         form = UserForm()

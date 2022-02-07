@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class MovieCategory(models.Model):
@@ -17,6 +18,12 @@ class Question(models.Model):
     content = models.TextField()
     create_date = models.DateTimeField(auto_now_add=True)
     voter = models.ManyToManyField(User, related_name='voter_question')
+    score = models.IntegerField(default=0,
+                                validators=[
+                                    MaxValueValidator(5),
+                                    MinValueValidator(1),
+                                ]
+                                )
 
 
 class Movie(models.Model):
@@ -31,7 +38,7 @@ class Movie(models.Model):
     review_count = models.PositiveIntegerField('리뷰수', default=0)
     review_point = models.PositiveIntegerField('리뷰평점', default=0)
     image = models.ImageField(upload_to=f"mv/", blank=True, null=True)
-    voter = models.ManyToManyField(User, related_name='voter_movie',null=True,blank=True)
+    voter = models.ManyToManyField(User, related_name='voter_movie', null=True, blank=True)
 
     def thumb_img_url(self):
         img_name = self.category.name
@@ -65,3 +72,5 @@ class Answer(models.Model):
 
     def __str__(self):
         return f"{self.display_name} - {self.mv}"
+
+

@@ -4,7 +4,7 @@
 
 {% with img_box_class="t-relative t-overflow-hidden t-rounded" %}
 {% with img_box_before_class="before:t-content-[''] before:t-absolute before:t-inset-0 before:t-bg-[#00000000] group-hover:before:t-bg-[#00000055] before:t-transition-all" %}
-{% with img_box_after_class="after:t-content-[attr(data-before)] after:t-hidden group-hover:after:t-block after:t-no-underline after:t-text-white after:t-border-2 after:t-border-white after:t-border-solid after:t-rounded after:t-p-2 after:t-whitespace-nowrap after:t-absolute after:t-top-[50%] after:t-left-[50%] after:t-translate-y-[-50%] after:t-translate-x-[-50%] after:t-transition-all" %}
+{% with img_box_after_class="after:t-content-[attr(data-before)] after:t-hidden group-hover:after:t-block after:t-no-underline after:t-text-yellow-500 after:t-border-2 after:t-border-yellow-500 after:t-border-solid after:t-rounded after:t-p-2 after:t-whitespace-nowrap after:t-absolute after:t-top-[50%] after:t-left-[50%] after:t-translate-y-[-50%] after:t-translate-x-[-50%] after:t-transition-all" %}
 <head>
     <style>
       html,
@@ -82,12 +82,11 @@
 <!-- 메인로고자리 -->
 
 <!-- Swiper -->
-
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         <!-- 1번 슬라이드 -->
         <div class="swiper-slide">
-            <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Ante/Ante_1920774.jpg" alt=""></a>
+            <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Nail/0126/Nail_1920774.jpg" alt="">
         </div>
         <!-- 2번 슬라이드 -->
         <div class="swiper-slide">
@@ -95,7 +94,7 @@
         </div>
         <!-- 3번 슬라이드 -->
         <div class="swiper-slide">
-            <img  src="https://caching2.lottecinema.co.kr/lotte_image/2022/Nail/0126/Nail_1920774.jpg" alt="">
+            <img  src="https://caching2.lottecinema.co.kr/lotte_image/2022/Ante/Ante_1920774.jpg" alt="">
         </div>
         <!-- 4번 슬라이드 -->
         <div class="swiper-slide">
@@ -137,7 +136,7 @@
             <ul class="t-grid t-grid-cols-1 sm:t-grid-cols-2 md:t-grid-cols-3 lg:sm:t-grid-cols-4 t-gap-[20px] t-mt-4">
                 {% for movie in movie_list %}
                 <li class="t-flex t-flex-col t-group">
-                    <a data-before="리뷰 하러가기" href="{% url 'mv:detail' movie.id %}"
+                    <a data-before="★ {{ movie.review_point }}" href="{% url 'mv:detail' movie.id %}"
                        class="{{img_box_class}} {{img_box_before_class}} {{img_box_after_class}}">
                         {% if movie.image %}
                         <img class="t-block t-w-full t-transition-all group-hover:t-scale-110 t-relative t--z-50" src="{{ movie.image.url }}" alt="">
@@ -145,14 +144,9 @@
                         <img class="t-block t-w-full t-transition-all group-hover:t-scale-110 t-relative t--z-50" src="{{ movie.thumb_img_url }}" alt="">
                         {% endif %}
                     </a>
-
                     <a class="t-text-center t-mt-2 t-no-underline t-text-gray-300 group-hover:t-text-white" href="{% url 'mv:detail' movie.id %}">
                         {{  movie.display_name }}
                     </a>
-
-                    <div class="t-text-center t-ml-10px t-mt-2 t-text-gray-300 group-hover:t-text-white" href="{% url 'mv:detail' movie.id %}">
-
-                    </div>
                 </li>
                 {% endfor %}
             </ul>
@@ -164,6 +158,7 @@
             <spen>Copyright 2022. Movie View. All Rights Reserved</spen>
         </p>
     </footer>
+    <br>
 </section>
 
 {% endwith %}

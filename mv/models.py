@@ -15,7 +15,7 @@ class Question(models.Model):
     movie = models.ForeignKey('Movie', on_delete=models.CASCADE)
     modify_date = models.DateTimeField(null=True, blank=True)
     subject = models.CharField(max_length=200)
-    content = models.TextField()
+    content = models.TextField(max_length=300)
     create_date = models.DateTimeField(auto_now_add=True)
     voter = models.ManyToManyField(User, related_name='voter_question')
     score = models.IntegerField(default=0,
@@ -36,7 +36,7 @@ class Movie(models.Model):
     category = models.ForeignKey(MovieCategory, on_delete=models.DO_NOTHING)
     hit_count = models.PositiveIntegerField('조회수', default=0)
     review_count = models.PositiveIntegerField('리뷰수', default=0)
-    review_point = models.PositiveIntegerField('리뷰평점', default=0)
+    review_point = models.FloatField('리뷰평점', default=0)
     image = models.ImageField(upload_to=f"mv/", blank=True, null=True)
     voter = models.ManyToManyField(User, related_name='voter_movie', null=True, blank=True)
 

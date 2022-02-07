@@ -7,7 +7,9 @@ class QuestionForm(forms.ModelForm):
         model = models.Question
         fields = [
             "content",
+            "score",
         ]
         labels = {
-            'content': ' ',
+            'content': '',
+            'score': '',
         }

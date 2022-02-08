@@ -14,7 +14,7 @@
         {%endif%}
     </div>
     <div>
-        <p class="t-mt-[10px] t-ml-[1rem]">리뷰 수 <span class="t-text-red-500">{{ movie.question_set.count }}</span><!-- ꒐-->
+        <p class="t-mt-[10px] t-ml-[1rem]">리뷰 수 <span class="t-text-blue-500">{{ movie.question_set.count }}</span><!-- ꒐-->
             <!--            추천 <a class="far fa-thumbs-up t-text-blue-500" href="{% url 'mv:vote_movie' movie.id %}">
                         </a> {{movie.voter.count}}-->
         </p>
@@ -25,14 +25,32 @@
             <li class="list-group-item" style="border-radius:5px">
                 <div class="">
                     <div class="t-text-sm">
-                        {{ question.create_date}}
-                        <div class="" data-rate="5">
-                            <i class="fas fa-star t-text-yellow-500"></i>
-                            <i class="fas fa-star t-text-yellow-500"></i>
-                            <i class="fas fa-star t-text-yellow-500"></i>
-                            <i class="fas fa-star t-text-yellow-500"></i>
-                            <i class="fas fa-star t-text-yellow-500"></i> : {{ question.score }}점
-                        </div>
+                        {{ question.create_date}} <br>
+                        {% if question.score == 5 %}
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        {% endif %}
+                        {% if question.score == 4 %}
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        {% endif %}
+                        {% if question.score == 3 %}
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        {% endif %}
+                        {% if question.score == 2 %}
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        {% endif %}
+                        {% if question.score == 1 %}
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        {% endif %}
                     </div>
                     <a class="t-flex t-items-center t-mt-[2rem]" href="#">
                         <img src="https://ifh.cc/g/KUL8gO.png" alt="">
@@ -71,7 +89,20 @@
         <form method="POST" action="{% url 'mv:question_create' movie.id %}">
             {% csrf_token %}
             {% bootstrap_form form %}
-            {% bootstrap_button button_type="submit" content="리뷰작성" %}
+
+
+            <select class="t-mb-3 t-text-black t-ml-[10px] score t-text-yellow-500" name="score" id="score" style="border-radius:5px">
+                <option value="1">★</option>
+                <option value="2">★★</option>
+                <option value="3">★★★</option>
+                <option value="4">★★★★</option>
+                <option value="5">★★★★★</option>
+            </select><br>
+
+            <button type="submit" class="btn btn-danger mb-2 reviewSubmit">
+                리뷰 작성
+            </button>
+            <!--{% bootstrap_button button_type="submit" content="리뷰작성" %}-->
         </form>
         {% endif %}
     </div>

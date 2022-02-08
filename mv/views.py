@@ -33,13 +33,18 @@ def detail(request, movie_id):
 
 @login_required(login_url='common:login')
 def question_create(request, movie_id):
+    score = request.GET.get('score', '')
     if request.method == 'POST':
         form = forms.QuestionForm(request.POST)
+        form2 = forms.ReviewForm(request.POST)
         if form.is_valid():
             question = form.save(commit=False)
             question.movie_id = movie_id
             question.user = request.user
-            question.score
+            if form2.is_valid():
+                savedScore = form2.cleaned_data['score']
+                print(savedScore)
+                question.score = savedScore
             question.save()
             messages.success(request, "질문이 등록되었습니다.")
             return redirect('mv:detail', movie_id=movie_id)

@@ -7,9 +7,16 @@ class QuestionForm(forms.ModelForm):
         model = models.Question
         fields = [
             "content",
-            "score",
         ]
         labels = {
             'content': '',
-            'score': '',
         }
+
+
+class ReviewForm(forms.Form):
+    score = forms.IntegerField(
+        label='한줄평',
+        widget=forms.NumberInput(attrs={
+            'class': 'score',
+        })
+    )

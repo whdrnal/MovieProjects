@@ -20,7 +20,7 @@ class Question(models.Model):
     voter = models.ManyToManyField(User, related_name='voter_question')
     score = models.IntegerField(default=0,
                                 validators=[
-                                    MaxValueValidator(5),
+                                    MaxValueValidator(10),
                                     MinValueValidator(1),
                                 ]
                                 )

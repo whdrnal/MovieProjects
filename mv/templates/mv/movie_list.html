@@ -136,7 +136,7 @@
             <ul class="t-grid t-grid-cols-1 sm:t-grid-cols-2 md:t-grid-cols-3 lg:sm:t-grid-cols-4 t-gap-[20px] t-mt-4">
                 {% for movie in movie_list %}
                 <li class="t-flex t-flex-col t-group">
-                    <a data-before="★ {{ movie.review_point }}" href="{% url 'mv:detail' movie.id %}"
+                    <a data-before="★ {{ movie.review_point |floatformat:2 }}" href="{% url 'mv:detail' movie.id %}"
                        class="{{img_box_class}} {{img_box_before_class}} {{img_box_after_class}}">
                         {% if movie.image %}
                         <img class="t-block t-w-full t-transition-all group-hover:t-scale-110 t-relative t--z-50" src="{{ movie.image.url }}" alt="">

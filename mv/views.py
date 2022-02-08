@@ -33,7 +33,6 @@ def detail(request, movie_id):
 
 @login_required(login_url='common:login')
 def question_create(request, movie_id):
-    score = request.GET.get('score', '')
     if request.method == 'POST':
         form = forms.QuestionForm(request.POST)
         form2 = forms.ReviewForm(request.POST)

@@ -145,7 +145,7 @@
 
                         {% endif %}
                     </a>
-                    <a class=" t-mt-2 t-no-underline t-text-gray-300 group-hover:t-text-white" href="{% url 'mv:detail' movie.id %}">
+                    <a class="t-mt-2 t-no-underline t-text-gray-300 group-hover:t-text-white" style="text-decoration:none" href="{% url 'mv:detail' movie.id %}">
                         {{  movie.display_name }}
 
                         {% if movie.review_point == 0%}

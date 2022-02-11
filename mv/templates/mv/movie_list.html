@@ -4,7 +4,7 @@
 
 {% with img_box_class="t-relative t-overflow-hidden t-rounded" %}
 {% with img_box_before_class="before:t-content-[''] before:t-absolute before:t-inset-0 before:t-bg-[#00000000] group-hover:before:t-bg-[#00000055] before:t-transition-all" %}
-{% with img_box_after_class="after:t-content-[attr(data-before)] after:t-hidden group-hover:after:t-block after:t-no-underline after:t-text-yellow-500 after:t-border-2 after:t-border-yellow-500 after:t-border-solid after:t-rounded after:t-p-2 after:t-whitespace-nowrap after:t-absolute after:t-top-[50%] after:t-left-[50%] after:t-translate-y-[-50%] after:t-translate-x-[-50%] after:t-transition-all" %}
+{% with img_box_after_class="after:t-content-[attr(data-before)] after:t-hidden group-hover:after:t-block after:t-no-underline after:t-text-white after:t-border-2 after:t-border-white after:t-border-solid after:t-rounded after:t-p-2 after:t-whitespace-nowrap after:t-absolute after:t-top-[50%] after:t-left-[50%] after:t-translate-y-[-50%] after:t-translate-x-[-50%] after:t-transition-all" %}
 <head>
     <style>
       html,
@@ -63,7 +63,6 @@
       .swiper-pagination-bullet-active{
       background: white;
       }
-
 
       .section:before{
       content:'';
@@ -128,7 +127,7 @@
 </body>
 
 
-
+<!--★ {{ movie.review_point |floatformat:2 }}-->
 <section class="section-prod-list">
     <div class="container p-0">
         <div class="container">
@@ -136,16 +135,31 @@
             <ul class="t-grid t-grid-cols-1 sm:t-grid-cols-2 md:t-grid-cols-3 lg:sm:t-grid-cols-4 t-gap-[20px] t-mt-4">
                 {% for movie in movie_list %}
                 <li class="t-flex t-flex-col t-group">
-                    <a data-before="★ {{ movie.review_point |floatformat:2 }}" href="{% url 'mv:detail' movie.id %}"
+                    <a data-before="리뷰 남기러가기" href="{% url 'mv:detail' movie.id %}"
                        class="{{img_box_class}} {{img_box_before_class}} {{img_box_after_class}}">
                         {% if movie.image %}
                         <img class="t-block t-w-full t-transition-all group-hover:t-scale-110 t-relative t--z-50" src="{{ movie.image.url }}" alt="">
                         {% else %}
                         <img class="t-block t-w-full t-transition-all group-hover:t-scale-110 t-relative t--z-50" src="{{ movie.thumb_img_url }}" alt="">
+
+
                         {% endif %}
                     </a>
-                    <a class="t-text-center t-mt-2 t-no-underline t-text-gray-300 group-hover:t-text-white" href="{% url 'mv:detail' movie.id %}">
+                    <a class=" t-mt-2 t-no-underline t-text-gray-300 group-hover:t-text-white" href="{% url 'mv:detail' movie.id %}">
                         {{  movie.display_name }}
+
+                        {% if movie.review_point == 0%}
+                        <div class="t-flex t-justify-center t-mt-[0.3rem]">
+                            <p class="t-text-red-500">★</p>
+                            <span>평점이 없습니다.</span>
+                        </div>
+
+                        {% else %}
+                        <div class="t-flex t-justify-center t-mt-[0.3rem]">
+                            <p class="t-text-yellow-500">★</p>
+                            {{ movie.review_point | floatformat:1 }}
+                        </div>
+                        {% endif %}
                     </a>
                 </li>
                 {% endfor %}

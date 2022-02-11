@@ -39,6 +39,10 @@ class Movie(models.Model):
     review_point = models.FloatField('리뷰평점', default=0)
     image = models.ImageField(upload_to=f"mv/", blank=True, null=True)
     voter = models.ManyToManyField(User, related_name='voter_movie', null=True, blank=True)
+    open_day = models.CharField('영화개봉날짜', max_length=50)
+    director_name = models.CharField('감독이름', max_length=100)
+    genre = models.CharField('장르', max_length=100)
+    english_movie_name = models.CharField('영어영화이름', max_length=100)
 
     def thumb_img_url(self):
         img_name = self.category.name
@@ -72,5 +76,3 @@ class Answer(models.Model):
 
     def __str__(self):
         return f"{self.display_name} - {self.mv}"
-
-

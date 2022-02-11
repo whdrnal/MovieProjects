@@ -10,5 +10,7 @@ def on_post_question_save(sender, instance: Question, created: bool, raw: bool, 
     movie: Movie = instance.movie
 
     review_point = movie.question_set.aggregate(Avg('score'))['score__avg']
+
     movie.review_point = review_point
+
     movie.save()

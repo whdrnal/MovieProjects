@@ -23,7 +23,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
-<nav class="navbar navbar-expand-md navbar-dark fixed-top t-bg-black">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #1c1c1c;">
     <div class="container-fluid">
         <a href="/"><img class="t-w-[4rem]" src="https://ifh.cc/g/GDOzCI.png"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,9 +47,9 @@
     </div>
 </nav>
 
-<body class="t-bg-black">
+<body style="background-color: #1c1c1c;">
 <section class="t-text-center t-text-white">
-        {% if messages %}
+<!--        {% if messages %}
             <div class="messages t-mt-[4rem]">
                 {% for message in messages %}
                     <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
@@ -58,7 +58,7 @@
                     </div>
                 {% endfor %}
             </div>
-        {% endif %}
+        {% endif %}-->
     {%block content%}
     {%endblock%}
 </section>

@@ -79,6 +79,7 @@ def question_delete(request, movie_id, question_id):
         messages.error(request, '수정권한이 없습니다')
     else:
         question.delete()
+
         messages.success(request, "질문이 삭제되었습니다.")
         return redirect("mv:detail", movie_id=movie_id)
 
@@ -100,4 +101,3 @@ def vote_movie(request, movie_id):
     messages.success(request, movie.voter)
 
     return redirect('mv:detail', movie_id=movie_id)
-

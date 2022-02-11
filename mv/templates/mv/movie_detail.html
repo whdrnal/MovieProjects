@@ -7,25 +7,91 @@
     <div class="t-flex t-justify-center">
         <img class="t-w-[26rem] t-mt-[6rem]"  style="border-radius:5px" src="{{movie.thumb_img_url}}" alt="">
     </div>
-    <div class="t-mt-[1rem]">
-        {% if user.is_authenticated %}
-        {%else%}
-        <a href="{% url 'common:login' %}?next={{request.get_full_path}}">로그인</a> 후 리뷰 작성을 할수 있습니다.
-        {%endif%}
+    <div class="t-flex t-justify-center t-mt-[0.5rem]">
+        {{ movie.display_name }} <br>
+        개봉날짜 : {{ movie.open_day }} <br>
+        영화감독 : {{ movie.director_name}} <br>
+        {{ movie.genre }} <br>
     </div>
-    <div>
-        <p class="t-mt-[10px] t-ml-[1rem]">리뷰 수 <span class="t-text-blue-500">{{ movie.question_set.count }}</span><!-- ꒐-->
-            <!--            추천 <a class="far fa-thumbs-up t-text-blue-500" href="{% url 'mv:vote_movie' movie.id %}">
-                        </a> {{movie.voter.count}}-->
-        </p>
-    </div>
-    <div class="t-px-[1rem] t-mt-[30px]">
+
+    <hr class="t-mt-[1.3rem]">
+    <div class="t-px-[1rem] t-mt-[1.5rem]">
+        <div class="t-mt-[1rem]">
+            {% if user.is_authenticated %}
+            {%else%}
+            <a class="t-text-red-500 hover:t-text-red-500" href="{% url 'common:login' %}?next={{request.get_full_path}}">로그인</a> 후 리뷰 작성을 할수 있습니다.
+            {%endif%}
+        </div>
+        <div class="t-mt-[1rem]">
+            {{  movie.question_list }}
+
+            {% if movie.question_set.count == 0 %}
+            <p class="t-text-red-500">리뷰가 없습니다.</p>
+
+            {% else %}
+            <div class="t-flex t-justify-center">
+                <p class="t-text-blue-500"> {{ movie.question_set.count }} </p>
+                <spen>　개의 리뷰 평점이 있습니다.</spen>
+            </div>
+
+            {% endif %}
+        </div>
         <ul class="list-group">
             {% for question in question_list %}
             <li class="list-group-item" style="border-radius:5px">
                 <div class="">
                     <div class="t-text-sm">
                         {{ question.create_date}} <br>
+                         {% if question.score == 10 %}
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        {% endif %}
+                         {% if question.score == 9 %}
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        {% endif %}
+                         {% if question.score == 8 %}
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        {% endif %}
+                         {% if question.score == 7 %}
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        {% endif %}
+                         {% if question.score == 6 %}
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        <i class="fas fa-star t-text-yellow-500"></i>
+                        {% endif %}
                         {% if question.score == 5 %}
                         <i class="fas fa-star t-text-yellow-500"></i>
                         <i class="fas fa-star t-text-yellow-500"></i>
@@ -79,7 +145,7 @@
         </ul>
     </div>
 
-    <div class="t-mt-[1rem] t-text-sm">
+    <div class="t-text-sm">
         <i class="fas fa-exclamation-triangle t-text-red-500"></i><br>
         여러분의 소중한 평점 및 영화 관람평을 작성해주세요.<br>
         주제와 무관한 리뷰 또는 스포일러는 표시제한 또는 삭제될 수 있습니다.
@@ -89,8 +155,8 @@
         {% if user.is_authenticated %}
         <form method="POST" action="{% url 'mv:question_create' movie.id %}">
             {% csrf_token %}
-            {% bootstrap_form form %}
 
+            {% bootstrap_form form %}
 
             <select class="t-mb-3 t-text-black t-ml-[10px] score t-text-yellow-500" name="score" id="score" style="border-radius:5px">
                 <option value="1">★ (1점)</option>
@@ -108,7 +174,6 @@
             <button type="submit" class="btn btn-primary mb-2 reviewSubmit">
                 리뷰 작성
             </button>
-            <!--{% bootstrap_button button_type="submit" content="리뷰작성" %}-->
         </form>
         {% endif %}
     </div>

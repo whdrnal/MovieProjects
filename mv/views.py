@@ -12,13 +12,13 @@ def index(request):
     search_keyword = request.GET.get('search_keyword', '')  # 검색어
 
     movie_list = Movie.objects.order_by('-id')
+
     if search_keyword.lower() != "none":
         movie_list = movie_list.filter(
             Q(display_name__icontains=search_keyword) |
             Q(name__icontains=search_keyword)
         ).distinct()
     question_list = Question.objects.order_by('-create_date')
-
     context = {'question_list': question_list, 'movie_list': movie_list, 'search_keyword': search_keyword}
     return render(request, 'mv/movie_list.html', context)
 
@@ -45,7 +45,7 @@ def question_create(request, movie_id):
                 print(savedScore)
                 question.score = savedScore
             question.save()
-            messages.success(request, "질문이 등록되었습니다.")
+            messages.warning(request, "질문이 등록되었습니다.")
             return redirect('mv:detail', movie_id=movie_id)
     return redirect('mv:detail', movie_id=movie_id)
 
@@ -55,7 +55,7 @@ def question_modify(request, movie_id, question_id):
     question = get_object_or_404(Question, pk=question_id)
     movie = Movie.objects.get(id=movie_id)
     if request.user != request.user:
-        messages.error(request, '수정권한이 없습니다')
+        messages.warning(request, '수정권한이 없습니다')
 
     if request.method == "POST":
         form = QuestionForm(request.POST, instance=question)
@@ -76,11 +76,11 @@ def question_delete(request, movie_id, question_id):
     question = get_object_or_404(Question, pk=question_id)
 
     if request.user != request.user:
-        messages.error(request, '수정권한이 없습니다')
+        messages.warning(request, '수정권한이 없습니다')
     else:
         question.delete()
 
-        messages.success(request, "질문이 삭제되었습니다.")
+        messages.warning(request, "질문이 삭제되었습니다.")
         return redirect("mv:detail", movie_id=movie_id)
 
 
@@ -88,7 +88,7 @@ def question_delete(request, movie_id, question_id):
 def vote_question(request, movie_id):
     question = get_object_or_404(Question, pk=movie_id)
     if request.user == question.user:
-        messages.error(request, '본인이 작성한 글은 추천할수 없습니다')
+        messages.warning(request, '본인이 작성한 글은 추천할수 없습니다')
     else:
         question.voter.add(request.user)
     return redirect('mv:detail', movie_id=movie_id)
@@ -98,6 +98,6 @@ def vote_question(request, movie_id):
 def vote_movie(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
     movie.voter.add(request.user)
-    messages.success(request, movie.voter)
+    messages.warning(request, movie.voter)
 
     return redirect('mv:detail', movie_id=movie_id)

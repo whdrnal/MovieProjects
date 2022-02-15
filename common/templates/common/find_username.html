@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% load django_bootstrap5 %}
+{% load humanize %}
+{%block content %}
+
+<head>
+    <style>
+        @CHARSET "UTF-8";
+
+* {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+}
+
+body {
+	background-color: #1c1c1c;
+}
+
+.login-form {
+	margin: 100px auto;
+	padding:1rem;
+	max-width: 330px;
+}
+
+    </style>
+</head>
+
+<body>
+<section class="t-mt-[3rem] login-form">
+        <h2 class="">아이디찾기</h2>
+    <form class="" method="post" action="" role="login">
+        <form method="post" class="post-form" action="{% url 'common:find_username' %}">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+
+            <div class="form-group t-justify-between t-text-left">
+                <label class="" for="first_name">실명</label>
+                <input type="text" class="form-control" placeholder="Realname" name="first_name" id="first_name"
+                       value="{{ form.first_name.value|default_if_none:'' }}">
+            </div>
+
+            <div class="form-group t-text-left">
+                <label for="email">이메일</label>
+                <input type="email" class="form-control" placeholder="Email" name="email" id="email"
+                       value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+
+            <button type="submit" name="go" class="btn btn-block btn-danger">아이디찾기</button>
+        </form>
+    </form>
+</section>
+
+</body>
+{% endblock %}

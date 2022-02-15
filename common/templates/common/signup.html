@@ -4,7 +4,7 @@
 <head>
 
 
-<style>
+    <style>
 @CHARSET "UTF-8";
 
 {
@@ -30,6 +30,13 @@ body {
     <form method="post" class="post-form" action="{% url 'common:signup' %}">
         {% csrf_token %}
         {% include "form_errors.html" %}
+
+        <div class="form-group t-text-left">
+            <label for="first_name">실명</label>
+            <input type="text" class="form-control" placeholder="Realname" name="first_namefirst_name" id="first_name"
+                   value="{{ form.first_name.value|default_if_none:'' }}">
+        </div>
+
 
         <div class="form-group t-text-left">
             <label for="username">아이디</label>

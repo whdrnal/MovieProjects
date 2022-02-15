@@ -85,7 +85,7 @@
     <div class="swiper-wrapper">
         <!-- 1번 슬라이드 -->
         <div class="swiper-slide">
-            <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Nail/0126/Nail_1920774.jpg" alt="">
+            <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Elly/Elly_1920774.jpg" alt="">
         </div>
         <!-- 2번 슬라이드 -->
         <div class="swiper-slide">
@@ -93,11 +93,12 @@
         </div>
         <!-- 3번 슬라이드 -->
         <div class="swiper-slide">
-            <img  src="https://caching2.lottecinema.co.kr/lotte_image/2022/Ante/Ante_1920774.jpg" alt="">
+            <img  src="https://caching2.lottecinema.co.kr/lotte_image/2022/Cyrano/Cyrano_1920774.jpg" alt="">
         </div>
         <!-- 4번 슬라이드 -->
         <div class="swiper-slide">
-            <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Cyrano/Cyrano_1920774.jpg" alt="">
+            <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Nail/0126/Nail_1920774.jpg" alt="">
+
         </div>
     </div>
     <div class="swiper-pagination"></div>
@@ -141,8 +142,6 @@
                         <img class="t-block t-w-full t-transition-all group-hover:t-scale-110 t-relative t--z-50" src="{{ movie.image.url }}" alt="">
                         {% else %}
                         <img class="t-block t-w-full t-transition-all group-hover:t-scale-110 t-relative t--z-50" src="{{ movie.thumb_img_url }}" alt="">
-
-
                         {% endif %}
                     </a>
                     <a class="t-mt-2 t-no-underline t-text-gray-300 group-hover:t-text-white" style="text-decoration:none" href="{% url 'mv:detail' movie.id %}">
@@ -164,7 +163,17 @@
                 </li>
                 {% endfor %}
             </ul>
+
+            {% if not movie_list %}
+            <center>
+                <img src="https://img.cgv.co.kr/R2014/images/common/popconi/state0.png" alt="" width="10%">
+            </center>
+            <p class="t-mt-[1rem]">' {{ search_keyword }} ' 검색결과가 없습니다.<br>
+                                         영화제목 명을 확인 후 다시 검색해주세요!</p>
+
+            {% endif %}
         </div>
+    </div>
     </div>
     <hr class="t-mt-[2rem]">
     <footer>

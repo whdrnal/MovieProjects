@@ -26,8 +26,11 @@ body {
 </head>
 
 <body>
+
+
 <section class="login-form ">
-    <form class="t-mt-[rem]" method="post" action="" role="login">
+    <h2>로그인</h2>
+    <form class="" method="post" action="" role="login">
         <form method="post" class="post-form" action="{% url 'common:login' %}">
             {% csrf_token %}
             {% include "form_errors.html" %}
@@ -48,14 +51,16 @@ body {
             <button type="submit" name="go" class="btn btn-block btn-danger">로그인</button>
 
             <div class="t-flex t-mt-[30px] t-ml-[4.0rem]">
-                <a class="t-text-gray-400 hover:t-text-gray-300" href="#">아이디찾기</a>
+                <a class="t-text-gray-400 hover:t-text-gray-300" href="/common/find_username/">아이디찾기</a>
                 &nbsp;
                 &nbsp;
-                <a class="t-text-gray-400 hover:t-text-gray-300" href="#">비밀번호찾기</a>
+                <a class="t-text-gray-400 hover:t-text-gray-300" href="/common/password_reset/">비밀번호찾기</a>
             </div>
         </form>
     </form>
+
 </section>
+
 
 </body>
 {% endblock %}

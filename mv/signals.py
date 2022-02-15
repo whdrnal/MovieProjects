@@ -14,3 +14,14 @@ def on_post_question_save(sender, instance: Question, created: bool, raw: bool, 
     movie.review_point = review_point
 
     movie.save()
+
+
+@receiver(post_save, sender=Question)
+def on_post_question_save(sender, instance: Question, created: bool, raw: bool, using, update_fields, **kwargs):
+    movie: Movie = instance.movie
+
+    review_point = movie.question_set.aggregate(Avg('score'))['score__avg']
+
+    movie.review_point = review_point
+
+    movie.save()

@@ -9,3 +9,15 @@ class UserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ("username", "password1", "password2", "email")
+
+
+class FindUsernameForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].required = True
+        self.fields['first_name'].required = True
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'email']
+

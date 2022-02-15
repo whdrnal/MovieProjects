@@ -552,6 +552,26 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 20px;
 }
 
+.t-ml-\[3rem\] {
+  margin-left: 3rem;
+}
+
+.t-mr-\[3rem\] {
+  margin-right: 3rem;
+}
+
+.t-ml-\[5rem\] {
+  margin-left: 5rem;
+}
+
+.t-mt-\[3rem\] {
+  margin-top: 3rem;
+}
+
+.t-mt-\[10rem\] {
+  margin-top: 10rem;
+}
+
 .t-block {
   display: block;
 }
@@ -574,6 +594,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-w-full {
   width: 100%;
+}
+
+.t-max-w-screen-md {
+  max-width: 768px;
+}
+
+.t-flex-1 {
+  flex: 1 1 0%;
 }
 
 .t-grid-cols-1 {
@@ -633,6 +661,26 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.t-text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.t-text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.t-text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.t-text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .t-text-gray-400 {

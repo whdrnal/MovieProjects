@@ -35,7 +35,7 @@
                 {% if user.is_authenticated %}
                 <a class="btn btn-outline t-text-gray-400 hover:t-text-white me-2" href="{% url 'common:logout' %}">{{ user.username }}</a>
                 {% else %}
-                <a class="btn t-text-gray-400  hover:t-text-white me-2" href="{% url 'common:login' %}">로그인</a>
+
                 {% endif %}
                 <a class="btn t-text-gray-400  hover:t-text-white me-2" href="{% url 'common:signup' %}">회원가입</a>
             </ul>

@@ -48,5 +48,3 @@ def find_username(request: HttpRequest):
         'form': form,
     })
 
-
-

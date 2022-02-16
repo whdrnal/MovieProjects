@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from django.contrib.auth.views import PasswordResetView
 from django.db.models import QuerySet
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
@@ -48,6 +47,4 @@ def find_username(request: HttpRequest):
     return render(request, 'common/find_username.html', {
         'form': form,
     })
-
-
 

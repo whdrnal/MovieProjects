@@ -1,12 +1,14 @@
-from django.contrib import messages
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.db.models import QuerySet
 from django.http import HttpRequest
-from django.shortcuts import render, redirect
 from django.urls import reverse
-
-from common.forms import UserForm, FindUsernameForm
+from common.forms import FindUsernameForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import views as auth_views
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from common.forms import UserForm
 
 
 def signup(request):

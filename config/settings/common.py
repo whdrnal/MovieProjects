@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     # 서드파티
     'django_bootstrap5',
-    'django_pydenticon',
+    # 'django_pydenticon',
 ]
 
 MIDDLEWARE = [

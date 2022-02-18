@@ -584,6 +584,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 22rem;
 }
 
+.t-mt-\[19rem\] {
+  margin-top: 19rem;
+}
+
+.t-mt-\[26rem\] {
+  margin-top: 26rem;
+}
+
+.t-mt-\[26\.1rem\] {
+  margin-top: 26.1rem;
+}
+
+.t-mt-\[26\.2rem\] {
+  margin-top: 26.2rem;
+}
+
 .t-block {
   display: block;
 }

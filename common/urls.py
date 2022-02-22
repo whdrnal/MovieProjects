@@ -15,8 +15,9 @@ urlpatterns = [
     # 비밀번호 찾기
     path('password_reset/',
          auth_views.PasswordResetView.as_view(success_url=reverse_lazy('common:password_reset_complete'),
-                                              email_template_name='common/password_reset_email.html', template_name = 'common/password_reset_form.html'),
-                                              name='password_reset'),
+                                              email_template_name='common/password_reset_email.html',
+                                              template_name='common/password_reset_form.html'),
+         name='password_reset'),
 
     path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
 

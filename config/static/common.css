@@ -476,6 +476,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: -50;
 }
 
+.t-mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .t-mt-\[50px\] {
   margin-top: 50px;
 }
@@ -496,6 +501,30 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 4.0rem;
 }
 
+.t-mt-\[22\.3rem\] {
+  margin-top: 22.3rem;
+}
+
+.t-mt-\[14rem\] {
+  margin-top: 14rem;
+}
+
+.t-mt-\[22rem\] {
+  margin-top: 22rem;
+}
+
+.t-mt-\[10rem\] {
+  margin-top: 10rem;
+}
+
+.t-mt-\[2rem\] {
+  margin-top: 2rem;
+}
+
+.t-mt-\[15rem\] {
+  margin-top: 15rem;
+}
+
 .t-mt-\[6rem\] {
   margin-top: 6rem;
 }
@@ -514,10 +543,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-mt-\[1rem\] {
   margin-top: 1rem;
-}
-
-.t-mt-\[2rem\] {
-  margin-top: 2rem;
 }
 
 .t-ml-\[1rem\] {
@@ -550,6 +575,54 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-mt-\[20px\] {
   margin-top: 20px;
+}
+
+.t-mt-\[18rem\] {
+  margin-top: 18rem;
+}
+
+.t-ml-\[1px\] {
+  margin-left: 1px;
+}
+
+.t-mr-\[1px\] {
+  margin-right: 1px;
+}
+
+.t-mr-\[1rem\] {
+  margin-right: 1rem;
+}
+
+.t-ml-\[2rem\] {
+  margin-left: 2rem;
+}
+
+.t-ml-\[3rem\] {
+  margin-left: 3rem;
+}
+
+.t-ml-\[1\.2rem\] {
+  margin-left: 1.2rem;
+}
+
+.t-ml-\[1\.1rem\] {
+  margin-left: 1.1rem;
+}
+
+.t-ml-\[4rem\] {
+  margin-left: 4rem;
+}
+
+.t-ml-\[5rem\] {
+  margin-left: 5rem;
+}
+
+.t-mt-\[rem\] {
+  margin-top: rem;
+}
+
+.t-mt-\[16rem\] {
+  margin-top: 16rem;
 }
 
 .t-block {
@@ -635,6 +708,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1.25rem;
 }
 
+.t-text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.t-text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.t-text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
 .t-text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -643,6 +731,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.t-text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.t-text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .t-text-red-500 {
@@ -660,19 +758,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(234 179 8 / var(--tw-text-opacity));
 }
 
-.t-text-black {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
 .t-text-gray-300 {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
-}
-
-.t-text-gray-600 {
-  --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
 .t-no-underline {

@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import json
 import os
 from pathlib import Path
 
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     # 서드파티
     'django_bootstrap5',
-    'django_pydenticon',
+    # 'django_pydenticon',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'movie',  # DB명
         'USER': 'root',  # DBMS 접속 아이디
-        'PASSWORD': '1234',  # DBMS 접속 비번
+        'PASSWORD': '',  # DBMS 접속 비번
         'HOST': '127.0.0.1',  # DBMS 주소
         'PORT': '3306',  # DBMS 포트
         'OPTIONS': {
@@ -146,5 +147,28 @@ LOGOUT_REDIRECT_URL = '/'
 
 CSRF_TRUSTED_ORIGINS = ['https://movieview.awesomestie.kr']
 
-# 이메일 보내기
 
+
+secret_file = os.path.join(BASE_DIR, 'secrets.json')
+secrets = json.loads(open(secret_file).read())
+# Email 전송
+
+# 메일을 호스트하는 서버
+EMAIL_HOST = 'smtp.gmail.com'
+
+# gmail과의 통신하는 포트
+EMAIL_PORT = '587'
+
+# 발신할 이메일
+# EMAIL_HOST_USER = '구글아이디@gmail.com'
+EMAIL_HOST_USER = 'whdrnal34@gmail.com'
+
+# 발신할 메일의 비밀번호
+# EMAIL_HOST_PASSWORD = '구글비밀번호'
+EMAIL_HOST_PASSWORD = secrets["SECRET_KEY"]
+
+# TLS 보안 방법
+EMAIL_USE_TLS = True
+
+# 사이트와 관련한 자동응답을 받을 이메일 주소
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

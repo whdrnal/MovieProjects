@@ -1,12 +1,16 @@
-from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
 from django.db.models import QuerySet
 from django.http import HttpRequest
-from django.shortcuts import render, redirect
 from django.urls import reverse
-
-from common.forms import UserForm, FindUsernameForm
+from common.forms import FindUsernameForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import views as auth_views
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from common.forms import UserForm
 
 
 def signup(request):
@@ -47,4 +51,20 @@ def find_username(request: HttpRequest):
     return render(request, 'common/find_username.html', {
         'form': form,
     })
+
+
+class UserPasswordResetView(PasswordResetView):
+    template_name = 'password_reset.html'
+    success_url = reverse_lazy('password_reset_done')
+    form_class = PasswordResetForm
+
+    def form_valid(self, form):
+        if User.objects.filter(email=self.request.POST.get("email")).exists():
+            return super().form_valid(form)
+        else:
+            return render(self.request, 'password_reset_done_fail.html')
+
+
+class UserPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'password_reset_done.html'  # 템플릿을 변경하려면 이와같은 형식으로 입력
 

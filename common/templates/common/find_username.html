@@ -29,7 +29,7 @@ body {
 
 <body>
 <section class="t-mt-[3rem] login-form">
-        <h2 class="">아이디찾기</h2>
+    <h2 class="">아이디찾기</h2>
     <form class="" method="post" action="" role="login">
         <form method="post" class="post-form" action="{% url 'common:find_username' %}">
             {% csrf_token %}
@@ -46,7 +46,6 @@ body {
                 <input type="email" class="form-control" placeholder="Email" name="email" id="email"
                        value="{{ form.email.value|default_if_none:'' }}">
             </div>
-
             <button type="submit" name="go" class="btn btn-block btn-danger">아이디찾기</button>
         </form>
     </form>

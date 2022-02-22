@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.18 | MIT License | https://tailwindcss.com
+! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -476,11 +476,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: -50;
 }
 
-.t-mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .t-mt-\[50px\] {
   margin-top: 50px;
 }
@@ -491,6 +486,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-mt-\[3rem\] {
   margin-top: 3rem;
+}
+
+.t-mt-\[20rem\] {
+  margin-top: 20rem;
 }
 
 .t-mt-\[30px\] {
@@ -505,8 +504,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 22.3rem;
 }
 
-.t-mt-\[14rem\] {
-  margin-top: 14rem;
+.t-mt-\[16rem\] {
+  margin-top: 16rem;
+}
+
+.t-mt-\[1rem\] {
+  margin-top: 1rem;
 }
 
 .t-mt-\[22rem\] {
@@ -517,8 +520,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 10rem;
 }
 
+.t-ml-\[5rem\] {
+  margin-left: 5rem;
+}
+
 .t-mt-\[2rem\] {
   margin-top: 2rem;
+}
+
+.t-ml-\[1\.2rem\] {
+  margin-left: 1.2rem;
 }
 
 .t-mt-\[15rem\] {
@@ -539,10 +550,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-mt-\[1\.5rem\] {
   margin-top: 1.5rem;
-}
-
-.t-mt-\[1rem\] {
-  margin-top: 1rem;
 }
 
 .t-ml-\[1rem\] {
@@ -577,52 +584,36 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 20px;
 }
 
-.t-mt-\[18rem\] {
-  margin-top: 18rem;
+.t-mt-\[21rem\] {
+  margin-top: 21rem;
 }
 
-.t-ml-\[1px\] {
-  margin-left: 1px;
+.t-mt-\[23rem\] {
+  margin-top: 23rem;
 }
 
-.t-mr-\[1px\] {
-  margin-right: 1px;
+.t-mt-\[23\.5rem\] {
+  margin-top: 23.5rem;
 }
 
-.t-mr-\[1rem\] {
-  margin-right: 1rem;
+.t-mt-\[23\.8rem\] {
+  margin-top: 23.8rem;
 }
 
-.t-ml-\[2rem\] {
-  margin-left: 2rem;
+.t-mt-\[30rem\] {
+  margin-top: 30rem;
 }
 
-.t-ml-\[3rem\] {
-  margin-left: 3rem;
+.t-mt-\[28rem\] {
+  margin-top: 28rem;
 }
 
-.t-ml-\[1\.2rem\] {
-  margin-left: 1.2rem;
+.t-mt-\[29rem\] {
+  margin-top: 29rem;
 }
 
-.t-ml-\[1\.1rem\] {
-  margin-left: 1.1rem;
-}
-
-.t-ml-\[4rem\] {
-  margin-left: 4rem;
-}
-
-.t-ml-\[5rem\] {
-  margin-left: 5rem;
-}
-
-.t-mt-\[rem\] {
-  margin-top: rem;
-}
-
-.t-mt-\[16rem\] {
-  margin-top: 16rem;
+.t-mt-\[28\.8rem\] {
+  margin-top: 28.8rem;
 }
 
 .t-block {
@@ -708,19 +699,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1.25rem;
 }
 
-.t-text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
 .t-text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
 
-.t-text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+.t-text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .t-text-gray-400 {

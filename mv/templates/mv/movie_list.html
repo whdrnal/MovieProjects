@@ -12,7 +12,6 @@
         height: 100vh;
         margin:0;
       }
-
       body {
         background: #eee;
         font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -20,17 +19,14 @@
         margin: 0;
         padding: 0;
       }
-
       .swiper {
         width: 100%;
       }
-
       .swiper-slide {
         text-align: center;
         font-size: 18px;
         background: #fffff;
         margin-top:4rem;
-
         /* Center slide text vertically */
         display: -webkit-box;
         display: -ms-flexbox;
@@ -72,30 +68,26 @@
       height: 100%;
       width: 50%;
       }
-
-
     </style>
 </head>
 
 <body>
-<!-- 메인로고자리 -->
 
-<!-- Swiper -->
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-        <!-- 1번 슬라이드 -->
+
         <div class="swiper-slide">
             <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Batman/Batman_1920774_4.jpg" alt="">
         </div>
-        <!-- 2번 슬라이드 -->
+
         <div class="swiper-slide">
             <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Elly/Elly_1920774.jpg" alt="">
         </div>
-        <!-- 3번 슬라이드 -->
+
         <div class="swiper-slide">
             <img  src="https://caching2.lottecinema.co.kr/lotte_image/2022/Cyrano/Cyrano_1920774.jpg" alt="">
         </div>
-        <!-- 4번 슬라이드 -->
+
         <div class="swiper-slide">
             <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Nail/0126/Nail_1920774.jpg" alt="">
 
@@ -106,7 +98,7 @@
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-<!-- Initialize Swiper -->
+
 <script>
       var swiper = new Swiper(".mySwiper", {
         spaceBetween: 30,
@@ -127,8 +119,6 @@
     </script>
 </body>
 
-
-<!--★ {{ movie.review_point |floatformat:2 }}-->
 <section class="section-prod-list">
     <div class="container p-0">
         <div class="container">
@@ -144,15 +134,14 @@
                         <img class="t-block t-w-full t-transition-all group-hover:t-scale-110 t-relative t--z-50" src="{{ movie.thumb_img_url }}" alt="">
                         {% endif %}
                     </a>
+
                     <a class="t-mt-2 t-no-underline t-text-gray-300 group-hover:t-text-white" style="text-decoration:none" href="{% url 'mv:detail' movie.id %}">
                         {{  movie.display_name }}
-
                         {% if movie.review_point == 0%}
                         <div class="t-flex t-justify-center t-mt-[0.3rem]">
                             <p class="t-text-red-500">★</p>
                             <span>평점이 없습니다.</span>
                         </div>
-
                         {% else %}
                         <div class="t-flex t-justify-center t-mt-[0.3rem]">
                             <p class="t-text-yellow-500">★</p>
@@ -163,14 +152,12 @@
                 </li>
                 {% endfor %}
             </ul>
-
             {% if not movie_list %}
             <center>
                 <img src="https://img.cgv.co.kr/R2014/images/common/popconi/state0.png" alt="" width="10%">
             </center>
             <p class="t-mt-[1rem]">' {{ search_keyword }} ' 검색결과가 없습니다.<br>
-                                      영화제목 명을 확인 후 다시 검색해주세요!</p>
-
+                영화제목 명을 확인 후 다시 검색해주세요!</p>
             {% endif %}
         </div>
     </div>
@@ -183,7 +170,6 @@
     </footer>
     <br>
 </section>
-
 {% endwith %}
 {% endwith %}
 {% endwith %}

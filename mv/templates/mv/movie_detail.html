@@ -125,9 +125,7 @@
                 </div>
                 <div class="container t-flex t-flex-col lg:t-flex-row t-justify-center t-mt-[4rem]">
                     <div style=" word-break:break-all;">
-
                         <span>{{ question.content }}</span>
-
                     </div>
                 </div>
                 <div class="t-flex t-mt-[5rem]">
@@ -155,9 +153,7 @@
         {% if user.is_authenticated %}
         <form method="POST" action="{% url 'mv:question_create' movie.id %}">
             {% csrf_token %}
-
             {% bootstrap_form form %}
-
             <select class="t-mb-3 t-text-black t-ml-[10px] score t-text-yellow-500" name="score" id="score" style="border-radius:5px">
                 <option value="1">★ (1점)</option>
                 <option value="2">★★ (2점)</option>
@@ -170,7 +166,6 @@
                 <option value="9">★★★★★★★★★ (9점)</option>
                 <option value="10">★★★★★★★★★★ (10점)</option>
             </select><br>
-
             <button type="submit" class="btn btn-primary mb-2 reviewSubmit">
                 리뷰 작성
             </button>
